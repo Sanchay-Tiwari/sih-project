@@ -5,7 +5,7 @@ async function analyzeEmailWithAI(subject, bodyText) {
     const fallbackResponse = { isPhishing: false, threatScore: 0, threatCategory: "Analysis Error", urgencyLevel: "Low", suspiciousCues: [], summary: "AI Analysis unavailable." };
     
     if (!apiKey) {
-        console.log("❌ Missing API Key in .env file");
+        console.log(" Missing API Key in .env file");
         return { ...fallbackResponse, summary: "Set GEMINI_API_KEY in .env" };
     }
 
@@ -34,7 +34,7 @@ async function analyzeEmailWithAI(subject, bodyText) {
         const result = await model.generateContent(prompt);
         return JSON.parse(result.response.text());
     } catch (error) {
-        console.error("\n=== 🚨 GEMINI API ERROR 🚨 ===");
+        console.error("\n===  GEMINI API ERROR  ===");
         console.error(error);
         console.error("==============================\n");
         return fallbackResponse;

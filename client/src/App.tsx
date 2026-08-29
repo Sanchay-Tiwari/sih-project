@@ -1,42 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { ShieldAlert, ShieldCheck, MapPin, AlertTriangle, FileText, Activity, Send } from 'lucide-react';
+import { ShieldAlert, ShieldCheck, MapPin, AlertTriangle, FileText, Activity, Send, Loader } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import html2pdf from 'html2pdf.js';
 import 'leaflet/dist/leaflet.css';
 
 interface AnalysisResult {
-  emailDetails: {
-    subject: string;
-    from: string;
-    to: string;
-    date: string;
-  };
-  authentication: {
-    spf: string;
-    dkim: string;
-    dmarc: string;
-  };
-  routing: {
-    hopChain: string[];
-    originatingIP: string | null;
-    location: {
-      ip: string;
-      city: string;
-      country: string;
-      lat: number;
-      lon: number;
-      isp: string;
-    };
-  };
-  aiThreatAnalysis: {
-    isPhishing: boolean;
-    threatScore: number;
-    threatCategory: string;
-    urgencyLevel: string;
-    suspiciousCues: string[];
-    summary: string;
-  };
+  emailDetails: { subject: string; from: string; to: string; date: string; };
+  authentication: { spf: string; dkim: string; dmarc: string; };
+  routing: { hopChain: string[]; originatingIP: string | null; location: { ip: string; city: string; country: string; lat: number; lon: number; isp: string; }; };
+  aiThreatAnalysis: { isPhishing: boolean; threatScore: number; threatCategory: string; urgencyLevel: string; suspiciousCues: string[]; summary: string; };
 }
 
 export default function App() {
@@ -44,6 +17,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState('');
+  const [isExporting, setIsExporting] = useState(false);
 
   const handleAnalyze = async () => {
     if (!rawEmail.trim()) {
@@ -51,6 +25,7 @@ export default function App() {
       return;
     }
     setError('');
+    setResult(null); // Clear previous results
     setLoading(true);
 
     try {
@@ -64,16 +39,24 @@ export default function App() {
   };
 
   const handleExportPDF = () => {
+    setIsExporting(true);
     const element = document.getElementById('forensic-report');
     if (!element) return;
-    const opt = {
-      margin: 0.5,
-      filename: `Forensic_Report_${Date.now()}.pdf`,
-      image: { type: 'jpeg' as const, quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' as const }
-    };
-    html2pdf().set(opt).from(element).save();
+    
+    // 1-second delay allows Leaflet map tiles to fully load before snapping the PDF
+    setTimeout(() => {
+      const opt = {
+        margin: 0.5,
+        filename: `Forensic_Report_${Date.now()}.pdf`,
+        image: { type: 'jpeg' as const, quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true }, // useCORS prevents map from blanking out
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' as const }
+      };
+      
+      html2pdf().set(opt).from(element).save().then(() => {
+        setIsExporting(false);
+      });
+    }, 1000);
   };
 
   const mapPosition: [number, number] = result 
@@ -82,6 +65,15 @@ export default function App() {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#0f172a', color: '#f8fafc', fontFamily: 'sans-serif', padding: '24px' }}>
+      
+      {/* CSS for custom spinning animations */}
+      <style>{`
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 50% { opacity: .5; } }
+        .animate-spin { animation: spin 1s linear infinite; }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+      `}</style>
+
       {/* Header */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid #334155', marginBottom: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -94,9 +86,11 @@ export default function App() {
         {result && (
           <button 
             onClick={handleExportPDF} 
-            style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#0284c7', color: '#fff', border: 'none', padding: '10px 16px', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+            disabled={isExporting}
+            style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: isExporting ? '#0369a1' : '#0284c7', color: '#fff', border: 'none', padding: '10px 16px', borderRadius: '6px', cursor: isExporting ? 'wait' : 'pointer', fontWeight: 'bold' }}
           >
-            <FileText size={18} /> Export PDF Report
+            {isExporting ? <Loader className="animate-spin" size={18} /> : <FileText size={18} />}
+            {isExporting ? 'Generating PDF...' : 'Export PDF Report'}
           </button>
         )}
       </header>
@@ -108,8 +102,9 @@ export default function App() {
           rows={6}
           value={rawEmail}
           onChange={(e) => setRawEmail(e.target.value)}
+          disabled={loading}
           placeholder="Paste headers or raw email text here (e.g. Received: from mail.example.com...)"
-          style={{ width: '100%', backgroundColor: '#0f172a', color: '#f8fafc', border: '1px solid #475569', borderRadius: '6px', padding: '12px', fontFamily: 'monospace', fontSize: '13px', boxSizing: 'border-box' }}
+          style={{ width: '100%', backgroundColor: '#0f172a', color: '#f8fafc', border: '1px solid #475569', borderRadius: '6px', padding: '12px', fontFamily: 'monospace', fontSize: '13px', boxSizing: 'border-box', opacity: loading ? 0.5 : 1 }}
         />
         {error && <p style={{ color: '#ef4444', marginTop: '8px' }}>{error}</p>}
         <button
@@ -122,15 +117,24 @@ export default function App() {
         </button>
       </div>
 
+      {/* Active Loading State Overlay */}
+      {loading && (
+        <div style={{ backgroundColor: '#1e293b', padding: '40px', borderRadius: '8px', border: '1px solid #334155', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+          <Loader size={48} color="#38bdf8" className="animate-spin" />
+          <h2 className="animate-pulse" style={{ margin: 0, color: '#f8fafc' }}>AI Interrogating Headers & Tracing IP Routes...</h2>
+          <p style={{ color: '#94a3b8', margin: 0 }}>Please wait while Gemini processes the threat telemetry.</p>
+        </div>
+      )}
+
       {/* Results Dashboard */}
-      {result && (
+      {result && !loading && (
         <div id="forensic-report" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           
           {/* Top Row: AI Threat Overview & Auth Badges */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             
-            {/* AI Threat Card */}
-            <div style={{ backgroundColor: '#1e293b', padding: '20px', borderRadius: '8px', border: `2px solid ${result.aiThreatAnalysis.threatScore > 50 ? '#ef4444' : '#10b981'}` }}>
+            {/* AI Threat Card - Added pageBreakInside: avoid */}
+            <div style={{ pageBreakInside: 'avoid', backgroundColor: '#1e293b', padding: '20px', borderRadius: '8px', border: `2px solid ${result.aiThreatAnalysis.threatScore > 50 ? '#ef4444' : '#10b981'}` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                 <h2 style={{ margin: 0, fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <AlertTriangle color={result.aiThreatAnalysis.threatScore > 50 ? '#ef4444' : '#10b981'} />
@@ -155,8 +159,8 @@ export default function App() {
               )}
             </div>
 
-            {/* Authentication Verification Card */}
-            <div style={{ backgroundColor: '#1e293b', padding: '20px', borderRadius: '8px', border: '1px solid #334155' }}>
+            {/* Authentication Verification Card - Added pageBreakInside: avoid */}
+            <div style={{ pageBreakInside: 'avoid', backgroundColor: '#1e293b', padding: '20px', borderRadius: '8px', border: '1px solid #334155' }}>
               <h2 style={{ margin: '0 0 16px 0', fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <ShieldCheck color="#38bdf8" /> Protocol Authentication
               </h2>
@@ -177,8 +181,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* Bottom Row: IP Routing & Interactive Map */}
-          <div style={{ backgroundColor: '#1e293b', padding: '20px', borderRadius: '8px', border: '1px solid #334155' }}>
+          {/* Bottom Row: IP Routing & Interactive Map - Added pageBreakInside: avoid */}
+          <div style={{ pageBreakInside: 'avoid', backgroundColor: '#1e293b', padding: '20px', borderRadius: '8px', border: '1px solid #334155' }}>
             <h2 style={{ margin: '0 0 16px 0', fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <MapPin color="#f59e0b" /> Originating IP Geolocation
             </h2>
@@ -198,7 +202,7 @@ export default function App() {
               </div>
 
               {/* Map Container */}
-              <div style={{ height: '300px', borderRadius: '8px', overflow: 'hidden' }}>
+              <div style={{ height: '300px', borderRadius: '8px', overflow: 'hidden', zIndex: 1 }}>
                 {result.routing.location.lat !== 0 ? (
                   <MapContainer 
                     {...({ center: mapPosition, zoom: 5, style: { height: '100%', width: '100%' } } as any)}
