@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 async function getGeoLocation(ipAddress) {
     const defaultData = { ip: ipAddress, city: 'Unknown', country: 'Unknown', lat: 0, lon: 0, isp: 'Unknown' };
@@ -22,4 +22,4 @@ async function getGeoLocation(ipAddress) {
     }
 }
 
-module.exports = { getGeoLocation };
+export { getGeoLocation };

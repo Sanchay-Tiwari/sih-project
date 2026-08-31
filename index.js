@@ -1,10 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import 'dotenv/config';
 
-const { parseEmailHeaders } = require('./services/headerParser');
-const { getGeoLocation } = require('./services/geoService');
-const { analyzeEmailWithAI } = require('./services/aiEngine');
+import { parseEmailHeaders } from './services/headerParser.js';
+import { getGeoLocation } from './services/geoService.js';
+import { analyzeEmailWithAI } from './services/aiEngine.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;

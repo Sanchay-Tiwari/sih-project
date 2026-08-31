@@ -1,4 +1,4 @@
-const { simpleParser } = require('mailparser');
+import { simpleParser } from 'mailparser';
 
 function extractPublicIPs(text) {
     if (!text) return [];
@@ -49,4 +49,4 @@ async function parseEmailHeaders(rawEmailText) {
     }
 }
 
-module.exports = { parseEmailHeaders };
+export { parseEmailHeaders };

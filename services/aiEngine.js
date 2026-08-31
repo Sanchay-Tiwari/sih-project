@@ -1,4 +1,4 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 async function analyzeEmailWithAI(subject, bodyText) {
     const apiKey = process.env.GEMINI_API_KEY;
@@ -12,9 +12,10 @@ async function analyzeEmailWithAI(subject, bodyText) {
     try {
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ 
-    model: "gemini-3.6-flash", 
-    generationConfig: { responseMimeType: "application/json" } 
-    });
+            model: "gemini-3.6-flash", 
+            generationConfig: { responseMimeType: "application/json" } 
+        });
+        
         const prompt = `
           Analyze this email for phishing, social engineering, and fraud intent.
           Subject: ${subject}
@@ -41,4 +42,4 @@ async function analyzeEmailWithAI(subject, bodyText) {
     }
 }
 
-module.exports = { analyzeEmailWithAI };
+export { analyzeEmailWithAI };
