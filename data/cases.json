@@ -1,0 +1,3628 @@
+[
+  {
+    "caseId": "CASE-2026-63982",
+    "createdAt": "2026-09-05T20:19:23.990Z",
+    "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+    "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+    "senderDomain": "microsoft-security-alert-center.com",
+    "to": "\"User Account\" <employee@company.com>",
+    "threatScore": 83,
+    "threatCategory": "Credential Harvesting",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "45.154.255.88",
+    "anonymizedIpHash": "2c83c03b0b9474244511163d55aaae2b12a9cde0c734587479df2f63c3ef6c41",
+    "maskedIp": "45.154.xxx.xxx",
+    "geo": {
+      "ip": "45.154.255.88",
+      "city": "Stockholm",
+      "region": "Stockholm County",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "lat": 59.3287,
+      "lon": 18.0717,
+      "isp": "KEFF-STO",
+      "org": "KEFF-STO",
+      "as": "AS41281 KeFF Networks Ltd"
+    },
+    "txHash": "0x4211216c1bd7f2e336f54d826bd6897664111eac974a9f8ebd50d8ba927bb2ed",
+    "evidenceHash": "0xedf465e4f8e8a534f0d39d81500f6118c56f337fa63ed3dadd2a9c88ca9af036",
+    "authSummary": {
+      "spf": "SOFTFAIL",
+      "dkim": "UNVERIFIED",
+      "dmarc": "FAIL"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-63982",
+      "timestamp": "2026-09-05T20:19:23.986Z",
+      "emailDetails": {
+        "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+        "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+        "fromEmail": "admin@microsoft-security-alert-center.com",
+        "senderDomain": "microsoft-security-alert-center.com",
+        "to": "\"User Account\" <employee@company.com>",
+        "date": "2026-09-04T14:20:00.000Z",
+        "returnPath": "no-reply@microsoft-security-alert-center.com",
+        "replyTo": "no-reply@microsoft-security-alert-center.com",
+        "messageId": "<ms-sec-88492041@microsoft-security-alert-center.com>"
+      },
+      "authentication": {
+        "spf": "SOFTFAIL",
+        "dkim": "UNVERIFIED",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mail.company.com; spf=softfail (IP 45.154.255.88); dkim=none; dmarc=fail action=none"
+      },
+      "anomalies": [
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: SOFTFAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "45.154.255.88"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from relay-host.cloud-vps.org (45.154.255.88) by mail.company.com with ESMTP; 04 Sep 2026 14:20:11 +0000",
+            "extractedIPs": [
+              "45.154.255.88"
+            ]
+          }
+        ],
+        "originatingIP": "45.154.255.88",
+        "location": {
+          "ip": "45.154.255.88",
+          "city": "Stockholm",
+          "region": "Stockholm County",
+          "country": "Sweden",
+          "countryCode": "SE",
+          "lat": 59.3287,
+          "lon": 18.0717,
+          "isp": "KEFF-STO",
+          "org": "KEFF-STO",
+          "as": "AS41281 KeFF Networks Ltd"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "microsoft-security-alert-center.com",
+        "hasMx": false,
+        "mxRecords": [],
+        "spfRecord": null,
+        "domainAgeDays": null,
+        "creationDate": "Unknown",
+        "registrar": "Privacy Protected / RDAP Unreachable",
+        "riskRating": "HIGH",
+        "riskFlags": [
+          "Failed to resolve MX records (Possible nonexistent or disposable domain)"
+        ]
+      },
+      "threatIntelligence": {
+        "ip": "45.154.255.88",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T20:19:22.096Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 83,
+        "threatCategory": "Credential Harvesting",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "Email explicitly failed cryptographic SPF/DMARC authentication.",
+          "Originating IP is flagged in threat intelligence feeds with an abuse confidence score of 88%.",
+          "Urgent credential expiration and account suspension coercion detected."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x4211216c1bd7f2e336f54d826bd6897664111eac974a9f8ebd50d8ba927bb2ed",
+        "blockNumber": 1048250,
+        "evidenceHash": "0xedf465e4f8e8a534f0d39d81500f6118c56f337fa63ed3dadd2a9c88ca9af036",
+        "timestamp": "2026-09-05T20:19:23.982Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x4211216c1bd7f2e336f54d826bd6897664111eac974a9f8ebd50d8ba927bb2ed"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-43003",
+    "createdAt": "2026-09-05T20:19:03.010Z",
+    "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+    "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+    "senderDomain": "microsoft-security-alert-center.com",
+    "to": "\"User Account\" <employee@company.com>",
+    "threatScore": 83,
+    "threatCategory": "Credential Harvesting",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "45.154.255.88",
+    "anonymizedIpHash": "2c83c03b0b9474244511163d55aaae2b12a9cde0c734587479df2f63c3ef6c41",
+    "maskedIp": "45.154.xxx.xxx",
+    "geo": {
+      "ip": "45.154.255.88",
+      "city": "Stockholm",
+      "region": "Stockholm County",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "lat": 59.3287,
+      "lon": 18.0717,
+      "isp": "KEFF-STO",
+      "org": "KEFF-STO",
+      "as": "AS41281 KeFF Networks Ltd"
+    },
+    "txHash": "0xca265c80dbe3ce520d0893256c7aff67af7a68f988ebcc26ce0ed4bb921f3a85",
+    "evidenceHash": "0x2d86bc4e3ed45b966a52d3de2f4b587d82b3247b7235ec537146097aac9e4897",
+    "authSummary": {
+      "spf": "SOFTFAIL",
+      "dkim": "UNVERIFIED",
+      "dmarc": "FAIL"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-43003",
+      "timestamp": "2026-09-05T20:19:03.008Z",
+      "emailDetails": {
+        "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+        "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+        "fromEmail": "admin@microsoft-security-alert-center.com",
+        "senderDomain": "microsoft-security-alert-center.com",
+        "to": "\"User Account\" <employee@company.com>",
+        "date": "2026-09-04T14:20:00.000Z",
+        "returnPath": "no-reply@microsoft-security-alert-center.com",
+        "replyTo": "no-reply@microsoft-security-alert-center.com",
+        "messageId": "<ms-sec-88492041@microsoft-security-alert-center.com>"
+      },
+      "authentication": {
+        "spf": "SOFTFAIL",
+        "dkim": "UNVERIFIED",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mail.company.com; spf=softfail (IP 45.154.255.88); dkim=none; dmarc=fail action=none"
+      },
+      "anomalies": [
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: SOFTFAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "45.154.255.88"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from relay-host.cloud-vps.org (45.154.255.88) by mail.company.com with ESMTP; 04 Sep 2026 14:20:11 +0000",
+            "extractedIPs": [
+              "45.154.255.88"
+            ]
+          }
+        ],
+        "originatingIP": "45.154.255.88",
+        "location": {
+          "ip": "45.154.255.88",
+          "city": "Stockholm",
+          "region": "Stockholm County",
+          "country": "Sweden",
+          "countryCode": "SE",
+          "lat": 59.3287,
+          "lon": 18.0717,
+          "isp": "KEFF-STO",
+          "org": "KEFF-STO",
+          "as": "AS41281 KeFF Networks Ltd"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "microsoft-security-alert-center.com",
+        "hasMx": false,
+        "mxRecords": [],
+        "spfRecord": null,
+        "domainAgeDays": null,
+        "creationDate": "Unknown",
+        "registrar": "Privacy Protected / RDAP Unreachable",
+        "riskRating": "HIGH",
+        "riskFlags": [
+          "Failed to resolve MX records (Possible nonexistent or disposable domain)"
+        ]
+      },
+      "threatIntelligence": {
+        "ip": "45.154.255.88",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T20:18:58.733Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 83,
+        "threatCategory": "Credential Harvesting",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "Email explicitly failed cryptographic SPF/DMARC authentication.",
+          "Originating IP is flagged in threat intelligence feeds with an abuse confidence score of 88%.",
+          "Urgent credential expiration and account suspension coercion detected."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xca265c80dbe3ce520d0893256c7aff67af7a68f988ebcc26ce0ed4bb921f3a85",
+        "blockNumber": 1048335,
+        "evidenceHash": "0x2d86bc4e3ed45b966a52d3de2f4b587d82b3247b7235ec537146097aac9e4897",
+        "timestamp": "2026-09-05T20:19:03.003Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xca265c80dbe3ce520d0893256c7aff67af7a68f988ebcc26ce0ed4bb921f3a85"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-74853",
+    "createdAt": "2026-09-05T20:11:14.863Z",
+    "subject": "Verify for Swiggy's Student Rewards Program - Your Code: 195495",
+    "from": "swiggyforstudents@swiggy.in",
+    "senderDomain": "swiggy.in",
+    "to": "sanchaytiwari@bitdurg.ac.in",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "54.240.27.99",
+    "anonymizedIpHash": "9dd94dbfd2623c585d2555613a9fc0c575637a4ae38d40f157473538b88fbbcf",
+    "maskedIp": "54.240.xxx.xxx",
+    "geo": {
+      "ip": "54.240.27.99",
+      "city": "Portland",
+      "region": "Oregon",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 45.5152,
+      "lon": -122.678,
+      "isp": "Amazon Technologies Inc.",
+      "org": "Amazon Web Services, Inc.",
+      "as": "AS16509 Amazon.com, Inc."
+    },
+    "txHash": "0xf24f7680d021950a3653412b4c92c1512be49b9a80ed2117a0b9b5709929203e",
+    "evidenceHash": "0xb3c067672137546c834a09393cd214f9b3868441258c5362b9c2690738269669",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-74853",
+      "timestamp": "2026-09-05T20:11:14.859Z",
+      "emailDetails": {
+        "subject": "Verify for Swiggy's Student Rewards Program - Your Code: 195495",
+        "from": "swiggyforstudents@swiggy.in",
+        "fromEmail": "swiggyforstudents@swiggy.in",
+        "senderDomain": "swiggy.in",
+        "to": "sanchaytiwari@bitdurg.ac.in",
+        "date": "2026-08-31T16:04:41.000Z",
+        "returnPath": "010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com",
+        "replyTo": "",
+        "messageId": "<010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.google.com; dkim=pass header.i=@swiggy.in header.s=s3iljnim4erhcwkgkf3ni3fxz4564fvd header.b=WQRk5QaE; dkim=pass header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b=rA2MQCnf; spf=pass (google.com: domain of 010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com designates 54.240.27.99 as permitted sender) smtp.mailfrom=010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=swiggy.in"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "54.240.27.99"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "by 2002:a05:7000:fa07:b0:891:f3f6:9836 with SMTP id cg7csp230860mac; Mon, 31 Aug 2026 09:04:42 -0700 (PDT)",
+            "extractedIPs": []
+          },
+          {
+            "hopNumber": 2,
+            "raw": "from a27-99.smtp-out.us-west-2.amazonses.com (a27-99.smtp-out.us-west-2.amazonses.com. [54.240.27.99]) by mx.google.com with ESMTPS id d9443c01a7336-2d7598d4140si190069105ad.137.20",
+            "extractedIPs": [
+              "54.240.27.99"
+            ]
+          }
+        ],
+        "originatingIP": "54.240.27.99",
+        "location": {
+          "ip": "54.240.27.99",
+          "city": "Portland",
+          "region": "Oregon",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 45.5152,
+          "lon": -122.678,
+          "isp": "Amazon Technologies Inc.",
+          "org": "Amazon Web Services, Inc.",
+          "as": "AS16509 Amazon.com, Inc."
+        }
+      },
+      "domainIntelligence": {
+        "domain": "swiggy.in",
+        "hasMx": true,
+        "mxRecords": [
+          "eu-smtp-inbound-1.mimecast.com (Priority: 0)",
+          "eu-smtp-inbound-2.mimecast.com (Priority: 0)",
+          "aspmx.l.google.com (Priority: 1)"
+        ],
+        "spfRecord": "v=spf1 redirect=b207ww6h._spf._d.mim.ec",
+        "domainAgeDays": 4461,
+        "creationDate": "2014-06-19",
+        "registrar": "GoDaddy",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "54.240.27.99",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xf24f7680d021950a3653412b4c92c1512be49b9a80ed2117a0b9b5709929203e",
+        "blockNumber": 1048601,
+        "evidenceHash": "0xb3c067672137546c834a09393cd214f9b3868441258c5362b9c2690738269669",
+        "timestamp": "2026-09-05T20:11:14.853Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xf24f7680d021950a3653412b4c92c1512be49b9a80ed2117a0b9b5709929203e"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-90217",
+    "createdAt": "2026-09-05T20:09:50.223Z",
+    "subject": "Verify for Swiggy's Student Rewards Program - Your Code: 195495",
+    "from": "swiggyforstudents@swiggy.in",
+    "senderDomain": "swiggy.in",
+    "to": "sanchaytiwari@bitdurg.ac.in",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "08.31.09.04",
+    "anonymizedIpHash": "8afecc399eac1847bb7095fd642935c2a630b18dfbd2cc201630ab8ec7f6d89a",
+    "maskedIp": "08.31.xxx.xxx",
+    "geo": {
+      "ip": "08.31.09.04",
+      "city": "Unknown",
+      "region": "Unknown",
+      "country": "Unknown",
+      "countryCode": "XX",
+      "lat": 0,
+      "lon": 0,
+      "isp": "Unknown / Private Network",
+      "org": "Unknown",
+      "as": "Unknown"
+    },
+    "txHash": "0x38f3d2e13d6bd3ce5c8b769cf73d9f7a82e89cfa79f4697a313f3401188c8f35",
+    "evidenceHash": "0x3719b4bbf607ea5982ae37e3c54150680160eaea630ad001613c669b25712168",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-90217",
+      "timestamp": "2026-09-05T20:09:50.220Z",
+      "emailDetails": {
+        "subject": "Verify for Swiggy's Student Rewards Program - Your Code: 195495",
+        "from": "swiggyforstudents@swiggy.in",
+        "fromEmail": "swiggyforstudents@swiggy.in",
+        "senderDomain": "swiggy.in",
+        "to": "sanchaytiwari@bitdurg.ac.in",
+        "date": "2026-08-31T16:04:41.000Z",
+        "returnPath": "010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com",
+        "replyTo": "",
+        "messageId": "<010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.google.com; dkim=pass header.i=@swiggy.in header.s=s3iljnim4erhcwkgkf3ni3fxz4564fvd header.b=WQRk5QaE; dkim=pass header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b=rA2MQCnf; spf=pass (google.com: domain of 010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com designates 54.240.27.99 as permitted sender) smtp.mailfrom=010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=swiggy.in"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "54.240.27.99",
+          "08.31.09.04"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "by 2002:a05:7000:fa07:b0:891:f3f6:9836 with SMTP id cg7csp230860mac; Mon, 31 Aug 2026 09:04:42 -0700 (PDT)",
+            "extractedIPs": []
+          },
+          {
+            "hopNumber": 2,
+            "raw": "from a27-99.smtp-out.us-west-2.amazonses.com (a27-99.smtp-out.us-west-2.amazonses.com. [54.240.27.99]) by mx.google.com with ESMTPS id d9443c01a7336-2d7598d4140si190069105ad.137.20",
+            "extractedIPs": [
+              "54.240.27.99",
+              "08.31.09.04"
+            ]
+          }
+        ],
+        "originatingIP": "08.31.09.04",
+        "location": {
+          "ip": "08.31.09.04",
+          "city": "Unknown",
+          "region": "Unknown",
+          "country": "Unknown",
+          "countryCode": "XX",
+          "lat": 0,
+          "lon": 0,
+          "isp": "Unknown / Private Network",
+          "org": "Unknown",
+          "as": "Unknown"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "swiggy.in",
+        "hasMx": true,
+        "mxRecords": [
+          "eu-smtp-inbound-2.mimecast.com (Priority: 0)",
+          "eu-smtp-inbound-1.mimecast.com (Priority: 0)",
+          "aspmx.l.google.com (Priority: 1)"
+        ],
+        "spfRecord": "v=spf1 redirect=b207ww6h._spf._d.mim.ec",
+        "domainAgeDays": 4461,
+        "creationDate": "2014-06-19",
+        "registrar": "GoDaddy",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "08.31.09.04",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x38f3d2e13d6bd3ce5c8b769cf73d9f7a82e89cfa79f4697a313f3401188c8f35",
+        "blockNumber": 1048217,
+        "evidenceHash": "0x3719b4bbf607ea5982ae37e3c54150680160eaea630ad001613c669b25712168",
+        "timestamp": "2026-09-05T20:09:50.217Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x38f3d2e13d6bd3ce5c8b769cf73d9f7a82e89cfa79f4697a313f3401188c8f35"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-44530",
+    "createdAt": "2026-09-05T20:09:04.537Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0xa7a66afd53ba95b8d6e5838d6b947ffc3cb1de3851522b7a358b6ff67f1f3e68",
+    "evidenceHash": "0xd9d530b6d4f4c400e11e51578cc354d9f5c2cba542faeb27f6281cd970cc26f2",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-44530",
+      "timestamp": "2026-09-05T20:09:04.535Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xa7a66afd53ba95b8d6e5838d6b947ffc3cb1de3851522b7a358b6ff67f1f3e68",
+        "blockNumber": 1048535,
+        "evidenceHash": "0xd9d530b6d4f4c400e11e51578cc354d9f5c2cba542faeb27f6281cd970cc26f2",
+        "timestamp": "2026-09-05T20:09:04.530Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xa7a66afd53ba95b8d6e5838d6b947ffc3cb1de3851522b7a358b6ff67f1f3e68"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-03724",
+    "createdAt": "2026-09-05T20:03:23.733Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0x49f800629b06206612c0f58194dc5c6cc6b9965a30719080d30e9c35f53c80d7",
+    "evidenceHash": "0xea1c330196b6fd8309260ad969e7dc78c156308362b049ad4c40f1956f2749b7",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-03724",
+      "timestamp": "2026-09-05T20:03:23.730Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": "v=spf1 include:_spf.google.com ~all",
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x49f800629b06206612c0f58194dc5c6cc6b9965a30719080d30e9c35f53c80d7",
+        "blockNumber": 1048584,
+        "evidenceHash": "0xea1c330196b6fd8309260ad969e7dc78c156308362b049ad4c40f1956f2749b7",
+        "timestamp": "2026-09-05T20:03:23.724Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x49f800629b06206612c0f58194dc5c6cc6b9965a30719080d30e9c35f53c80d7"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-96535",
+    "createdAt": "2026-09-05T20:03:16.540Z",
+    "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+    "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+    "senderDomain": "microsoft-security-alert-center.com",
+    "to": "\"User Account\" <employee@company.com>",
+    "threatScore": 83,
+    "threatCategory": "Credential Harvesting",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "45.154.255.88",
+    "anonymizedIpHash": "2c83c03b0b9474244511163d55aaae2b12a9cde0c734587479df2f63c3ef6c41",
+    "maskedIp": "45.154.xxx.xxx",
+    "geo": {
+      "ip": "45.154.255.88",
+      "city": "Stockholm",
+      "region": "Stockholm County",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "lat": 59.3287,
+      "lon": 18.0717,
+      "isp": "KEFF-STO",
+      "org": "KEFF-STO",
+      "as": "AS41281 KeFF Networks Ltd"
+    },
+    "txHash": "0xb89c566971a234dfaa6e328b5bcfd638070b14dede4de2f57cdf6852183d063c",
+    "evidenceHash": "0x144ae5ff789605774ae7e01199e497afc75923cd627952b280f3b784d19b0fd7",
+    "authSummary": {
+      "spf": "SOFTFAIL",
+      "dkim": "UNVERIFIED",
+      "dmarc": "FAIL"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-96535",
+      "timestamp": "2026-09-05T20:03:16.538Z",
+      "emailDetails": {
+        "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+        "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+        "fromEmail": "admin@microsoft-security-alert-center.com",
+        "senderDomain": "microsoft-security-alert-center.com",
+        "to": "\"User Account\" <employee@company.com>",
+        "date": "2026-09-04T14:20:00.000Z",
+        "returnPath": "no-reply@microsoft-security-alert-center.com",
+        "replyTo": "no-reply@microsoft-security-alert-center.com",
+        "messageId": "<ms-sec-88492041@microsoft-security-alert-center.com>"
+      },
+      "authentication": {
+        "spf": "SOFTFAIL",
+        "dkim": "UNVERIFIED",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mail.company.com; spf=softfail (IP 45.154.255.88); dkim=none; dmarc=fail action=none"
+      },
+      "anomalies": [
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: SOFTFAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "45.154.255.88"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from relay-host.cloud-vps.org (45.154.255.88) by mail.company.com with ESMTP; 04 Sep 2026 14:20:11 +0000",
+            "extractedIPs": [
+              "45.154.255.88"
+            ]
+          }
+        ],
+        "originatingIP": "45.154.255.88",
+        "location": {
+          "ip": "45.154.255.88",
+          "city": "Stockholm",
+          "region": "Stockholm County",
+          "country": "Sweden",
+          "countryCode": "SE",
+          "lat": 59.3287,
+          "lon": 18.0717,
+          "isp": "KEFF-STO",
+          "org": "KEFF-STO",
+          "as": "AS41281 KeFF Networks Ltd"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "microsoft-security-alert-center.com",
+        "hasMx": false,
+        "mxRecords": [],
+        "spfRecord": null,
+        "domainAgeDays": null,
+        "creationDate": "Unknown",
+        "registrar": "Privacy Protected / RDAP Unreachable",
+        "riskRating": "HIGH",
+        "riskFlags": [
+          "Failed to resolve MX records (Possible nonexistent or disposable domain)"
+        ]
+      },
+      "threatIntelligence": {
+        "ip": "45.154.255.88",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T20:03:15.512Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 83,
+        "threatCategory": "Credential Harvesting",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "Email explicitly failed cryptographic SPF/DMARC authentication.",
+          "Originating IP is flagged in threat intelligence feeds with an abuse confidence score of 88%.",
+          "Urgent credential expiration and account suspension coercion detected."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xb89c566971a234dfaa6e328b5bcfd638070b14dede4de2f57cdf6852183d063c",
+        "blockNumber": 1048397,
+        "evidenceHash": "0x144ae5ff789605774ae7e01199e497afc75923cd627952b280f3b784d19b0fd7",
+        "timestamp": "2026-09-05T20:03:16.535Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xb89c566971a234dfaa6e328b5bcfd638070b14dede4de2f57cdf6852183d063c"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-73431",
+    "createdAt": "2026-09-05T19:52:53.435Z",
+    "subject": "Verify for Swiggy's Student Rewards Program - Your Code: 195495",
+    "from": "swiggyforstudents@swiggy.in",
+    "senderDomain": "swiggy.in",
+    "to": "sanchaytiwari@bitdurg.ac.in",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "08.31.09.04",
+    "anonymizedIpHash": "8afecc399eac1847bb7095fd642935c2a630b18dfbd2cc201630ab8ec7f6d89a",
+    "maskedIp": "08.31.xxx.xxx",
+    "geo": {
+      "ip": "08.31.09.04",
+      "city": "Unknown",
+      "region": "Unknown",
+      "country": "Unknown",
+      "countryCode": "XX",
+      "lat": 0,
+      "lon": 0,
+      "isp": "Unknown / Private Network",
+      "org": "Unknown",
+      "as": "Unknown"
+    },
+    "txHash": "0x09b2ee33dd2783e2456730da5099eba10eeea978e9bd234106dbbb5898233d5c",
+    "evidenceHash": "0x48fe65f6cc09b47de17d0cd1be047ece29d7ddb4e3d3ee32002a9977c8f9a2dc",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-73431",
+      "timestamp": "2026-09-05T19:52:53.432Z",
+      "emailDetails": {
+        "subject": "Verify for Swiggy's Student Rewards Program - Your Code: 195495",
+        "from": "swiggyforstudents@swiggy.in",
+        "fromEmail": "swiggyforstudents@swiggy.in",
+        "senderDomain": "swiggy.in",
+        "to": "sanchaytiwari@bitdurg.ac.in",
+        "date": "2026-08-31T16:04:41.000Z",
+        "returnPath": "010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com",
+        "replyTo": "",
+        "messageId": "<010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.google.com; dkim=pass header.i=@swiggy.in header.s=s3iljnim4erhcwkgkf3ni3fxz4564fvd header.b=WQRk5QaE; dkim=pass header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b=rA2MQCnf; spf=pass (google.com: domain of 010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com designates 54.240.27.99 as permitted sender) smtp.mailfrom=010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=swiggy.in"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "54.240.27.99",
+          "08.31.09.04"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "by 2002:a05:7000:fa07:b0:891:f3f6:9836 with SMTP id cg7csp230860mac; Mon, 31 Aug 2026 09:04:42 -0700 (PDT)",
+            "extractedIPs": []
+          },
+          {
+            "hopNumber": 2,
+            "raw": "from a27-99.smtp-out.us-west-2.amazonses.com (a27-99.smtp-out.us-west-2.amazonses.com. [54.240.27.99]) by mx.google.com with ESMTPS id d9443c01a7336-2d7598d4140si190069105ad.137.20",
+            "extractedIPs": [
+              "54.240.27.99",
+              "08.31.09.04"
+            ]
+          }
+        ],
+        "originatingIP": "08.31.09.04",
+        "location": {
+          "ip": "08.31.09.04",
+          "city": "Unknown",
+          "region": "Unknown",
+          "country": "Unknown",
+          "countryCode": "XX",
+          "lat": 0,
+          "lon": 0,
+          "isp": "Unknown / Private Network",
+          "org": "Unknown",
+          "as": "Unknown"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "swiggy.in",
+        "hasMx": true,
+        "mxRecords": [
+          "eu-smtp-inbound-1.mimecast.com (Priority: 0)",
+          "eu-smtp-inbound-2.mimecast.com (Priority: 0)",
+          "aspmx.l.google.com (Priority: 1)"
+        ],
+        "spfRecord": "v=spf1 redirect=b207ww6h._spf._d.mim.ec",
+        "domainAgeDays": 4461,
+        "creationDate": "2014-06-19",
+        "registrar": "GoDaddy",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "08.31.09.04",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x09b2ee33dd2783e2456730da5099eba10eeea978e9bd234106dbbb5898233d5c",
+        "blockNumber": 1048257,
+        "evidenceHash": "0x48fe65f6cc09b47de17d0cd1be047ece29d7ddb4e3d3ee32002a9977c8f9a2dc",
+        "timestamp": "2026-09-05T19:52:53.431Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x09b2ee33dd2783e2456730da5099eba10eeea978e9bd234106dbbb5898233d5c"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-44015",
+    "createdAt": "2026-09-05T19:49:04.021Z",
+    "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+    "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+    "senderDomain": "microsoft-security-alert-center.com",
+    "to": "\"User Account\" <employee@company.com>",
+    "threatScore": 83,
+    "threatCategory": "Credential Harvesting",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "45.154.255.88",
+    "anonymizedIpHash": "2c83c03b0b9474244511163d55aaae2b12a9cde0c734587479df2f63c3ef6c41",
+    "maskedIp": "45.154.xxx.xxx",
+    "geo": {
+      "ip": "45.154.255.88",
+      "city": "Stockholm",
+      "region": "Stockholm County",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "lat": 59.3287,
+      "lon": 18.0717,
+      "isp": "KEFF-STO",
+      "org": "KEFF-STO",
+      "as": "AS41281 KeFF Networks Ltd"
+    },
+    "txHash": "0x8d0c3c885f6ea29bd89933fc77bcdda38e9ce2199d7a09f447b46b67af207c9d",
+    "evidenceHash": "0x9141790ebdb3e0730e67411acb0d4b082f5304fb85ecbf0223e2d106b7364d46",
+    "authSummary": {
+      "spf": "SOFTFAIL",
+      "dkim": "UNVERIFIED",
+      "dmarc": "FAIL"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-44015",
+      "timestamp": "2026-09-05T19:49:04.019Z",
+      "emailDetails": {
+        "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+        "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+        "fromEmail": "admin@microsoft-security-alert-center.com",
+        "senderDomain": "microsoft-security-alert-center.com",
+        "to": "\"User Account\" <employee@company.com>",
+        "date": "2026-09-04T14:20:00.000Z",
+        "returnPath": "no-reply@microsoft-security-alert-center.com",
+        "replyTo": "no-reply@microsoft-security-alert-center.com",
+        "messageId": "<ms-sec-88492041@microsoft-security-alert-center.com>"
+      },
+      "authentication": {
+        "spf": "SOFTFAIL",
+        "dkim": "UNVERIFIED",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mail.company.com; spf=softfail (IP 45.154.255.88); dkim=none; dmarc=fail action=none"
+      },
+      "anomalies": [
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: SOFTFAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "45.154.255.88"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from relay-host.cloud-vps.org (45.154.255.88) by mail.company.com with ESMTP; 04 Sep 2026 14:20:11 +0000",
+            "extractedIPs": [
+              "45.154.255.88"
+            ]
+          }
+        ],
+        "originatingIP": "45.154.255.88",
+        "location": {
+          "ip": "45.154.255.88",
+          "city": "Stockholm",
+          "region": "Stockholm County",
+          "country": "Sweden",
+          "countryCode": "SE",
+          "lat": 59.3287,
+          "lon": 18.0717,
+          "isp": "KEFF-STO",
+          "org": "KEFF-STO",
+          "as": "AS41281 KeFF Networks Ltd"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "microsoft-security-alert-center.com",
+        "hasMx": false,
+        "mxRecords": [],
+        "spfRecord": null,
+        "domainAgeDays": null,
+        "creationDate": "Unknown",
+        "registrar": "Privacy Protected / RDAP Unreachable",
+        "riskRating": "HIGH",
+        "riskFlags": [
+          "Failed to resolve MX records (Possible nonexistent or disposable domain)"
+        ]
+      },
+      "threatIntelligence": {
+        "ip": "45.154.255.88",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T19:49:02.921Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 83,
+        "threatCategory": "Credential Harvesting",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "Email explicitly failed cryptographic SPF/DMARC authentication.",
+          "Originating IP is flagged in threat intelligence feeds with an abuse confidence score of 88%.",
+          "Urgent credential expiration and account suspension coercion detected."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x8d0c3c885f6ea29bd89933fc77bcdda38e9ce2199d7a09f447b46b67af207c9d",
+        "blockNumber": 1048616,
+        "evidenceHash": "0x9141790ebdb3e0730e67411acb0d4b082f5304fb85ecbf0223e2d106b7364d46",
+        "timestamp": "2026-09-05T19:49:04.015Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x8d0c3c885f6ea29bd89933fc77bcdda38e9ce2199d7a09f447b46b67af207c9d"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-15551",
+    "createdAt": "2026-09-05T19:48:35.557Z",
+    "subject": "No Subject",
+    "from": "swiggyforstudents@swiggy.in",
+    "senderDomain": "swiggy.in",
+    "to": "Unknown Recipient",
+    "threatScore": 8,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": null,
+    "anonymizedIpHash": "NONE",
+    "maskedIp": "Unknown",
+    "geo": {
+      "ip": "Unknown",
+      "city": "Internal Network",
+      "region": "Unknown",
+      "country": "Private Subnet",
+      "countryCode": "XX",
+      "lat": 0,
+      "lon": 0,
+      "isp": "Local / Private MTA Relay",
+      "org": "Unknown",
+      "as": "Unknown"
+    },
+    "txHash": "0xbdc7c3c4389fff7be9088c8e7aee0ab0d8f01822a971c4ce76aff034e8e4fb06",
+    "evidenceHash": "0x05f26d495efdeb9eb12b738dda1e525308da017450123f3dca2d4391e0f4cdcb",
+    "authSummary": {
+      "spf": "UNVERIFIED",
+      "dkim": "UNVERIFIED",
+      "dmarc": "UNVERIFIED"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-15551",
+      "timestamp": "2026-09-05T19:48:35.555Z",
+      "emailDetails": {
+        "subject": "No Subject",
+        "from": "swiggyforstudents@swiggy.in",
+        "fromEmail": "swiggyforstudents@swiggy.in",
+        "senderDomain": "swiggy.in",
+        "to": "",
+        "date": "2026-09-05T19:48:34.595Z",
+        "returnPath": "",
+        "replyTo": "",
+        "messageId": ""
+      },
+      "authentication": {
+        "spf": "UNVERIFIED",
+        "dkim": "UNVERIFIED",
+        "dmarc": "UNVERIFIED",
+        "rawAuthResults": "None provided"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [],
+        "hopDetails": [],
+        "originatingIP": null,
+        "location": {
+          "ip": "Unknown",
+          "city": "Internal Network",
+          "region": "Unknown",
+          "country": "Private Subnet",
+          "countryCode": "XX",
+          "lat": 0,
+          "lon": 0,
+          "isp": "Local / Private MTA Relay",
+          "org": "Unknown",
+          "as": "Unknown"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "swiggy.in",
+        "hasMx": true,
+        "mxRecords": [
+          "eu-smtp-inbound-1.mimecast.com (Priority: 0)",
+          "eu-smtp-inbound-2.mimecast.com (Priority: 0)",
+          "aspmx.l.google.com (Priority: 1)"
+        ],
+        "spfRecord": "v=spf1 redirect=b207ww6h._spf._d.mim.ec",
+        "domainAgeDays": 4461,
+        "creationDate": "2014-06-19",
+        "registrar": "GoDaddy",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "Unknown",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "INTERNAL_IP",
+        "reputationSummary": "Internal or Private Network IP Address."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 8,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xbdc7c3c4389fff7be9088c8e7aee0ab0d8f01822a971c4ce76aff034e8e4fb06",
+        "blockNumber": 1048207,
+        "evidenceHash": "0x05f26d495efdeb9eb12b738dda1e525308da017450123f3dca2d4391e0f4cdcb",
+        "timestamp": "2026-09-05T19:48:35.551Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xbdc7c3c4389fff7be9088c8e7aee0ab0d8f01822a971c4ce76aff034e8e4fb06"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-20922",
+    "createdAt": "2026-09-05T19:47:00.928Z",
+    "subject": "No Subject",
+    "from": "\"Final Call\" <no-reply@propeers.in>",
+    "senderDomain": "propeers.in",
+    "to": "Unknown Recipient",
+    "threatScore": 8,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": null,
+    "anonymizedIpHash": "NONE",
+    "maskedIp": "Unknown",
+    "geo": {
+      "ip": "Unknown",
+      "city": "Internal Network",
+      "region": "Unknown",
+      "country": "Private Subnet",
+      "countryCode": "XX",
+      "lat": 0,
+      "lon": 0,
+      "isp": "Local / Private MTA Relay",
+      "org": "Unknown",
+      "as": "Unknown"
+    },
+    "txHash": "0x5a02bafcae360e68810ad14a400779dfbef47bbdd6657e72ebbce85511e113fe",
+    "evidenceHash": "0x71dbe6724d8bfb70dfc16d35b693a5b665e20ae47ec5175a05bab7c1653d3b6d",
+    "authSummary": {
+      "spf": "UNVERIFIED",
+      "dkim": "UNVERIFIED",
+      "dmarc": "UNVERIFIED"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-20922",
+      "timestamp": "2026-09-05T19:47:00.926Z",
+      "emailDetails": {
+        "subject": "No Subject",
+        "from": "\"Final Call\" <no-reply@propeers.in>",
+        "fromEmail": "no-reply@propeers.in",
+        "senderDomain": "propeers.in",
+        "to": "",
+        "date": "2026-09-05T19:46:59.847Z",
+        "returnPath": "",
+        "replyTo": {
+          "value": [],
+          "html": "",
+          "text": ""
+        },
+        "messageId": ""
+      },
+      "authentication": {
+        "spf": "UNVERIFIED",
+        "dkim": "UNVERIFIED",
+        "dmarc": "UNVERIFIED",
+        "rawAuthResults": "None provided"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [],
+        "hopDetails": [],
+        "originatingIP": null,
+        "location": {
+          "ip": "Unknown",
+          "city": "Internal Network",
+          "region": "Unknown",
+          "country": "Private Subnet",
+          "countryCode": "XX",
+          "lat": 0,
+          "lon": 0,
+          "isp": "Local / Private MTA Relay",
+          "org": "Unknown",
+          "as": "Unknown"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "propeers.in",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 1)"
+        ],
+        "spfRecord": "v=spf1 include:zohomail.in ~all",
+        "domainAgeDays": 1300,
+        "creationDate": "2023-02-12",
+        "registrar": "GoDaddy",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "Unknown",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "INTERNAL_IP",
+        "reputationSummary": "Internal or Private Network IP Address."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 8,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x5a02bafcae360e68810ad14a400779dfbef47bbdd6657e72ebbce85511e113fe",
+        "blockNumber": 1048310,
+        "evidenceHash": "0x71dbe6724d8bfb70dfc16d35b693a5b665e20ae47ec5175a05bab7c1653d3b6d",
+        "timestamp": "2026-09-05T19:47:00.922Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x5a02bafcae360e68810ad14a400779dfbef47bbdd6657e72ebbce85511e113fe"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-88037",
+    "createdAt": "2026-09-05T19:43:08.043Z",
+    "subject": "URGENT & CONFIDENTIAL: Acquisition Escrow Wire Transfer #99481",
+    "from": "\"Jonathan Reed (CEO)\" <ceo@target-corp.com>",
+    "senderDomain": "target-corp.com",
+    "to": "\"Emily Chen (CFO)\" <cfo@target-corp.com>",
+    "threatScore": 100,
+    "threatCategory": "Executive Impersonation (BEC)",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "194.26.29.102",
+    "anonymizedIpHash": "f6f920e2cf397f82b2210f68e8dd77359f370f432c442b86cb09d632319d343a",
+    "maskedIp": "194.26.xxx.xxx",
+    "geo": {
+      "ip": "194.26.29.102",
+      "city": "St Petersburg",
+      "region": "St.-Petersburg",
+      "country": "Russia",
+      "countryCode": "RU",
+      "lat": 59.8929,
+      "lon": 30.3285,
+      "isp": "Media Land LLC",
+      "org": "Media Land LLC",
+      "as": "Unknown"
+    },
+    "txHash": "0xd0fa0328a6738ff808b9b9ee54122226d73d88e925678eb4d0a7e33c8af48a1d",
+    "evidenceHash": "0x14ba337cb36f2cd6ab70ab88cb658ad66cd5fe79b1a15368f21d911240e50e30",
+    "authSummary": {
+      "spf": "FAIL",
+      "dkim": "FAIL",
+      "dmarc": "FAIL"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 100/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-88037",
+      "timestamp": "2026-09-05T19:43:08.040Z",
+      "emailDetails": {
+        "subject": "URGENT & CONFIDENTIAL: Acquisition Escrow Wire Transfer #99481",
+        "from": "\"Jonathan Reed (CEO)\" <ceo@target-corp.com>",
+        "fromEmail": "ceo@target-corp.com",
+        "senderDomain": "target-corp.com",
+        "to": "\"Emily Chen (CFO)\" <cfo@target-corp.com>",
+        "date": "2026-09-05T10:14:15.000Z",
+        "returnPath": "bounce@spoof-exec-redirect.com",
+        "replyTo": "executive-desk@external-offshore-settlement.com",
+        "messageId": "<unverified-random-msg-9921@attacker-relay.net>"
+      },
+      "authentication": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mx.target-corp.com; spf=fail (sender IP is 194.26.29.102) smtp.mailfrom=spoof-exec@ceo-private-corp.com; dkim=fail; dmarc=fail"
+      },
+      "anomalies": [
+        {
+          "type": "RETURN_PATH_MISMATCH",
+          "severity": "HIGH",
+          "title": "From & Return-Path Domain Mismatch",
+          "description": "Sender displays domain '@target-corp.com', but envelope return path directs to unrelated domain '@spoof-exec-redirect.com'. Common indicator of address spoofing.",
+          "senderDomain": "target-corp.com",
+          "returnPathDomain": "spoof-exec-redirect.com"
+        },
+        {
+          "type": "REPLY_TO_MISMATCH",
+          "severity": "HIGH",
+          "title": "Reply-To Diversion Detected",
+          "description": "Replies are redirected to an external domain '@external-offshore-settlement.com' instead of sender domain '@target-corp.com'. Common in spear phishing and invoice fraud.",
+          "senderDomain": "target-corp.com",
+          "replyToDomain": "external-offshore-settlement.com"
+        },
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: FAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "194.26.29.102"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-out.attacker-relay.net (194.26.29.102) by mx.target-corp.com with SMTP; 05 Sep 2026 10:14:22 +0000",
+            "extractedIPs": [
+              "194.26.29.102"
+            ]
+          },
+          {
+            "hopNumber": 2,
+            "raw": "from internal.spoofer (10.0.0.5) by mail-out.attacker-relay.net; 05 Sep 2026 10:14:20 +0000",
+            "extractedIPs": []
+          }
+        ],
+        "originatingIP": "194.26.29.102",
+        "location": {
+          "ip": "194.26.29.102",
+          "city": "St Petersburg",
+          "region": "St.-Petersburg",
+          "country": "Russia",
+          "countryCode": "RU",
+          "lat": 59.8929,
+          "lon": 30.3285,
+          "isp": "Media Land LLC",
+          "org": "Media Land LLC",
+          "as": "Unknown"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "target-corp.com",
+        "hasMx": true,
+        "mxRecords": [
+          "aspmx.l.google.com (Priority: 1)",
+          "alt1.aspmx.l.google.com (Priority: 5)",
+          "alt2.aspmx.l.google.com (Priority: 5)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 9882,
+        "creationDate": "1999-08-16",
+        "registrar": "Network Solutions, LLC",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "194.26.29.102",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T19:43:06.196Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 100,
+        "threatCategory": "Executive Impersonation (BEC)",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "From & Return-Path domain mismatch indicates envelope sender spoofing.",
+          "Reply-To header redirects correspondence away from sender domain.",
+          "Email explicitly failed cryptographic SPF/DMARC authentication.",
+          "Originating IP is flagged in threat intelligence feeds with an abuse confidence score of 88%.",
+          "Financial wire transfer diversion instructions detected in email content."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 100/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xd0fa0328a6738ff808b9b9ee54122226d73d88e925678eb4d0a7e33c8af48a1d",
+        "blockNumber": 1048600,
+        "evidenceHash": "0x14ba337cb36f2cd6ab70ab88cb658ad66cd5fe79b1a15368f21d911240e50e30",
+        "timestamp": "2026-09-05T19:43:08.037Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xd0fa0328a6738ff808b9b9ee54122226d73d88e925678eb4d0a7e33c8af48a1d"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-51448",
+    "createdAt": "2026-09-05T19:42:31.455Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0x3d15ead04b7165e7e8f111844f09ab7b1bb1ebd1151ab8fa49a6da1f5f0443d9",
+    "evidenceHash": "0xb09436dd380d3f54fe6a717bbecc9439c9e9d2d0056189f86ed644c31e60843d",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-51448",
+      "timestamp": "2026-09-05T19:42:31.452Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": "v=spf1 include:_spf.google.com ~all",
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x3d15ead04b7165e7e8f111844f09ab7b1bb1ebd1151ab8fa49a6da1f5f0443d9",
+        "blockNumber": 1048353,
+        "evidenceHash": "0xb09436dd380d3f54fe6a717bbecc9439c9e9d2d0056189f86ed644c31e60843d",
+        "timestamp": "2026-09-05T19:42:31.448Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x3d15ead04b7165e7e8f111844f09ab7b1bb1ebd1151ab8fa49a6da1f5f0443d9"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-17893",
+    "createdAt": "2026-09-05T19:38:37.898Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0xeb24cd9ea51cb1262caba3fcfad2f4215b6d76c5550a33bc01d0a00e8feb0ae3",
+    "evidenceHash": "0xa9f47782e59f4ac7f4365d234755a6776bdab74fd594070b367043cf7cfbc32d",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-17893",
+      "timestamp": "2026-09-05T19:38:37.896Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xeb24cd9ea51cb1262caba3fcfad2f4215b6d76c5550a33bc01d0a00e8feb0ae3",
+        "blockNumber": 1048657,
+        "evidenceHash": "0xa9f47782e59f4ac7f4365d234755a6776bdab74fd594070b367043cf7cfbc32d",
+        "timestamp": "2026-09-05T19:38:37.893Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xeb24cd9ea51cb1262caba3fcfad2f4215b6d76c5550a33bc01d0a00e8feb0ae3"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-12429",
+    "createdAt": "2026-09-05T19:38:32.432Z",
+    "subject": "URGENT & CONFIDENTIAL: Acquisition Escrow Wire Transfer #99481",
+    "from": "\"Jonathan Reed (CEO)\" <ceo@target-corp.com>",
+    "senderDomain": "target-corp.com",
+    "to": "\"Emily Chen (CFO)\" <cfo@target-corp.com>",
+    "threatScore": 100,
+    "threatCategory": "Executive Impersonation (BEC)",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "194.26.29.102",
+    "anonymizedIpHash": "f6f920e2cf397f82b2210f68e8dd77359f370f432c442b86cb09d632319d343a",
+    "maskedIp": "194.26.xxx.xxx",
+    "geo": {
+      "ip": "194.26.29.102",
+      "city": "St Petersburg",
+      "region": "St.-Petersburg",
+      "country": "Russia",
+      "countryCode": "RU",
+      "lat": 59.8929,
+      "lon": 30.3285,
+      "isp": "Media Land LLC",
+      "org": "Media Land LLC",
+      "as": "Unknown"
+    },
+    "txHash": "0x2388d245fe506ab61fa8f2bf72f55edca957b0f52477c84f95e470132a5e3d06",
+    "evidenceHash": "0x180d7d654e76f7f0b25007391464bc7164e3ce5ac8f0870fa7fda5c40a0753ec",
+    "authSummary": {
+      "spf": "FAIL",
+      "dkim": "FAIL",
+      "dmarc": "FAIL"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 100/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-12429",
+      "timestamp": "2026-09-05T19:38:32.432Z",
+      "emailDetails": {
+        "subject": "URGENT & CONFIDENTIAL: Acquisition Escrow Wire Transfer #99481",
+        "from": "\"Jonathan Reed (CEO)\" <ceo@target-corp.com>",
+        "fromEmail": "ceo@target-corp.com",
+        "senderDomain": "target-corp.com",
+        "to": "\"Emily Chen (CFO)\" <cfo@target-corp.com>",
+        "date": "2026-09-05T10:14:15.000Z",
+        "returnPath": "bounce@spoof-exec-redirect.com",
+        "replyTo": "executive-desk@external-offshore-settlement.com",
+        "messageId": "<unverified-random-msg-9921@attacker-relay.net>"
+      },
+      "authentication": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mx.target-corp.com; spf=fail (sender IP is 194.26.29.102) smtp.mailfrom=spoof-exec@ceo-private-corp.com; dkim=fail; dmarc=fail"
+      },
+      "anomalies": [
+        {
+          "type": "RETURN_PATH_MISMATCH",
+          "severity": "HIGH",
+          "title": "From & Return-Path Domain Mismatch",
+          "description": "Sender displays domain '@target-corp.com', but envelope return path directs to unrelated domain '@spoof-exec-redirect.com'. Common indicator of address spoofing.",
+          "senderDomain": "target-corp.com",
+          "returnPathDomain": "spoof-exec-redirect.com"
+        },
+        {
+          "type": "REPLY_TO_MISMATCH",
+          "severity": "HIGH",
+          "title": "Reply-To Diversion Detected",
+          "description": "Replies are redirected to an external domain '@external-offshore-settlement.com' instead of sender domain '@target-corp.com'. Common in spear phishing and invoice fraud.",
+          "senderDomain": "target-corp.com",
+          "replyToDomain": "external-offshore-settlement.com"
+        },
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: FAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "194.26.29.102"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-out.attacker-relay.net (194.26.29.102) by mx.target-corp.com with SMTP; 05 Sep 2026 10:14:22 +0000",
+            "extractedIPs": [
+              "194.26.29.102"
+            ]
+          },
+          {
+            "hopNumber": 2,
+            "raw": "from internal.spoofer (10.0.0.5) by mail-out.attacker-relay.net; 05 Sep 2026 10:14:20 +0000",
+            "extractedIPs": []
+          }
+        ],
+        "originatingIP": "194.26.29.102",
+        "location": {
+          "ip": "194.26.29.102",
+          "city": "St Petersburg",
+          "region": "St.-Petersburg",
+          "country": "Russia",
+          "countryCode": "RU",
+          "lat": 59.8929,
+          "lon": 30.3285,
+          "isp": "Media Land LLC",
+          "org": "Media Land LLC",
+          "as": "Unknown"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "target-corp.com",
+        "hasMx": true,
+        "mxRecords": [
+          "aspmx.l.google.com (Priority: 1)",
+          "alt1.aspmx.l.google.com (Priority: 5)",
+          "alt2.aspmx.l.google.com (Priority: 5)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 9882,
+        "creationDate": "1999-08-16",
+        "registrar": "Network Solutions, LLC",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "194.26.29.102",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T19:38:30.485Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 100,
+        "threatCategory": "Executive Impersonation (BEC)",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "From & Return-Path domain mismatch indicates envelope sender spoofing.",
+          "Reply-To header redirects correspondence away from sender domain.",
+          "Email explicitly failed cryptographic SPF/DMARC authentication.",
+          "Originating IP is flagged in threat intelligence feeds with an abuse confidence score of 88%.",
+          "Financial wire transfer diversion instructions detected in email content."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 100/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x2388d245fe506ab61fa8f2bf72f55edca957b0f52477c84f95e470132a5e3d06",
+        "blockNumber": 1048209,
+        "evidenceHash": "0x180d7d654e76f7f0b25007391464bc7164e3ce5ac8f0870fa7fda5c40a0753ec",
+        "timestamp": "2026-09-05T19:38:32.429Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x2388d245fe506ab61fa8f2bf72f55edca957b0f52477c84f95e470132a5e3d06"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-66785",
+    "createdAt": "2026-09-05T19:34:26.790Z",
+    "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+    "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+    "senderDomain": "microsoft-security-alert-center.com",
+    "to": "\"User Account\" <employee@company.com>",
+    "threatScore": 83,
+    "threatCategory": "Credential Harvesting",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "45.154.255.88",
+    "anonymizedIpHash": "2c83c03b0b9474244511163d55aaae2b12a9cde0c734587479df2f63c3ef6c41",
+    "maskedIp": "45.154.xxx.xxx",
+    "geo": {
+      "ip": "45.154.255.88",
+      "city": "Stockholm",
+      "region": "Stockholm County",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "lat": 59.3287,
+      "lon": 18.0717,
+      "isp": "KEFF-STO",
+      "org": "KEFF-STO",
+      "as": "AS41281 KeFF Networks Ltd"
+    },
+    "txHash": "0x45fc2a70a246381465b6e90a999c5bf2ff2ad5f407f7e8444f2f42d35e12ca40",
+    "evidenceHash": "0xe390e5f1b0d3a2ae972a877491e1f28dc3139ba40e8198b5ffd6a79b3e8b17c9",
+    "authSummary": {
+      "spf": "SOFTFAIL",
+      "dkim": "UNVERIFIED",
+      "dmarc": "FAIL"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-66785",
+      "timestamp": "2026-09-05T19:34:26.788Z",
+      "emailDetails": {
+        "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+        "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+        "fromEmail": "admin@microsoft-security-alert-center.com",
+        "senderDomain": "microsoft-security-alert-center.com",
+        "to": "\"User Account\" <employee@company.com>",
+        "date": "2026-09-04T14:20:00.000Z",
+        "returnPath": "no-reply@microsoft-security-alert-center.com",
+        "replyTo": "no-reply@microsoft-security-alert-center.com",
+        "messageId": "<ms-sec-88492041@microsoft-security-alert-center.com>"
+      },
+      "authentication": {
+        "spf": "SOFTFAIL",
+        "dkim": "UNVERIFIED",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mail.company.com; spf=softfail (IP 45.154.255.88); dkim=none; dmarc=fail action=none"
+      },
+      "anomalies": [
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: SOFTFAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "45.154.255.88"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from relay-host.cloud-vps.org (45.154.255.88) by mail.company.com with ESMTP; 04 Sep 2026 14:20:11 +0000",
+            "extractedIPs": [
+              "45.154.255.88"
+            ]
+          }
+        ],
+        "originatingIP": "45.154.255.88",
+        "location": {
+          "ip": "45.154.255.88",
+          "city": "Stockholm",
+          "region": "Stockholm County",
+          "country": "Sweden",
+          "countryCode": "SE",
+          "lat": 59.3287,
+          "lon": 18.0717,
+          "isp": "KEFF-STO",
+          "org": "KEFF-STO",
+          "as": "AS41281 KeFF Networks Ltd"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "microsoft-security-alert-center.com",
+        "hasMx": false,
+        "mxRecords": [],
+        "spfRecord": null,
+        "domainAgeDays": null,
+        "creationDate": "Unknown",
+        "registrar": "Privacy Protected / RDAP Unreachable",
+        "riskRating": "HIGH",
+        "riskFlags": [
+          "Failed to resolve MX records (Possible nonexistent or disposable domain)"
+        ]
+      },
+      "threatIntelligence": {
+        "ip": "45.154.255.88",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T19:34:25.692Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 83,
+        "threatCategory": "Credential Harvesting",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "Email explicitly failed cryptographic SPF/DMARC authentication.",
+          "Originating IP is flagged in threat intelligence feeds with an abuse confidence score of 88%.",
+          "Urgent credential expiration and account suspension coercion detected."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x45fc2a70a246381465b6e90a999c5bf2ff2ad5f407f7e8444f2f42d35e12ca40",
+        "blockNumber": 1048512,
+        "evidenceHash": "0xe390e5f1b0d3a2ae972a877491e1f28dc3139ba40e8198b5ffd6a79b3e8b17c9",
+        "timestamp": "2026-09-05T19:34:26.785Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x45fc2a70a246381465b6e90a999c5bf2ff2ad5f407f7e8444f2f42d35e12ca40"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-60870",
+    "createdAt": "2026-09-05T19:34:20.879Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0x6c1ab72733dfd9b57cfe0660ab5d9d3a98a1102c7ce1dd0e10f7ee2d14f129dc",
+    "evidenceHash": "0x213e04ab00d13c1dfb80a635e6b211be39a3cc99b882bf057fccacedecf69ce2",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-60870",
+      "timestamp": "2026-09-05T19:34:20.874Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x6c1ab72733dfd9b57cfe0660ab5d9d3a98a1102c7ce1dd0e10f7ee2d14f129dc",
+        "blockNumber": 1048209,
+        "evidenceHash": "0x213e04ab00d13c1dfb80a635e6b211be39a3cc99b882bf057fccacedecf69ce2",
+        "timestamp": "2026-09-05T19:34:20.870Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x6c1ab72733dfd9b57cfe0660ab5d9d3a98a1102c7ce1dd0e10f7ee2d14f129dc"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-11743",
+    "createdAt": "2026-09-05T19:31:51.753Z",
+    "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+    "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+    "senderDomain": "microsoft-security-alert-center.com",
+    "to": "\"User Account\" <employee@company.com>",
+    "threatScore": 83,
+    "threatCategory": "Credential Harvesting",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "45.154.255.88",
+    "anonymizedIpHash": "2c83c03b0b9474244511163d55aaae2b12a9cde0c734587479df2f63c3ef6c41",
+    "maskedIp": "45.154.xxx.xxx",
+    "geo": {
+      "ip": "45.154.255.88",
+      "city": "Stockholm",
+      "region": "Stockholm County",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "lat": 59.3287,
+      "lon": 18.0717,
+      "isp": "KEFF-STO",
+      "org": "KEFF-STO",
+      "as": "AS41281 KeFF Networks Ltd"
+    },
+    "txHash": "0x305dee8dcb759f37872b9570a65ea00b1ac0efdd339d67d93bd7d0c0df0871e3",
+    "evidenceHash": "0x75b1eb2c002ffa50ad97e420452ab1ddd782bcad14b39a8502c137934484d90d",
+    "authSummary": {
+      "spf": "SOFTFAIL",
+      "dkim": "UNVERIFIED",
+      "dmarc": "FAIL"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-11743",
+      "timestamp": "2026-09-05T19:31:51.750Z",
+      "emailDetails": {
+        "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
+        "from": "\"Microsoft 365 Security Team\" <admin@microsoft-security-alert-center.com>",
+        "fromEmail": "admin@microsoft-security-alert-center.com",
+        "senderDomain": "microsoft-security-alert-center.com",
+        "to": "\"User Account\" <employee@company.com>",
+        "date": "2026-09-04T14:20:00.000Z",
+        "returnPath": "no-reply@microsoft-security-alert-center.com",
+        "replyTo": "no-reply@microsoft-security-alert-center.com",
+        "messageId": "<ms-sec-88492041@microsoft-security-alert-center.com>"
+      },
+      "authentication": {
+        "spf": "SOFTFAIL",
+        "dkim": "UNVERIFIED",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mail.company.com; spf=softfail (IP 45.154.255.88); dkim=none; dmarc=fail action=none"
+      },
+      "anomalies": [
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: SOFTFAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "45.154.255.88"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from relay-host.cloud-vps.org (45.154.255.88) by mail.company.com with ESMTP; 04 Sep 2026 14:20:11 +0000",
+            "extractedIPs": [
+              "45.154.255.88"
+            ]
+          }
+        ],
+        "originatingIP": "45.154.255.88",
+        "location": {
+          "ip": "45.154.255.88",
+          "city": "Stockholm",
+          "region": "Stockholm County",
+          "country": "Sweden",
+          "countryCode": "SE",
+          "lat": 59.3287,
+          "lon": 18.0717,
+          "isp": "KEFF-STO",
+          "org": "KEFF-STO",
+          "as": "AS41281 KeFF Networks Ltd"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "microsoft-security-alert-center.com",
+        "hasMx": false,
+        "mxRecords": [],
+        "spfRecord": null,
+        "domainAgeDays": null,
+        "creationDate": "Unknown",
+        "registrar": "Privacy Protected / RDAP Unreachable",
+        "riskRating": "HIGH",
+        "riskFlags": [
+          "Failed to resolve MX records (Possible nonexistent or disposable domain)"
+        ]
+      },
+      "threatIntelligence": {
+        "ip": "45.154.255.88",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T19:31:50.387Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 83,
+        "threatCategory": "Credential Harvesting",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "Email explicitly failed cryptographic SPF/DMARC authentication.",
+          "Originating IP is flagged in threat intelligence feeds with an abuse confidence score of 88%.",
+          "Urgent credential expiration and account suspension coercion detected."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 83/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x305dee8dcb759f37872b9570a65ea00b1ac0efdd339d67d93bd7d0c0df0871e3",
+        "blockNumber": 1048280,
+        "evidenceHash": "0x75b1eb2c002ffa50ad97e420452ab1ddd782bcad14b39a8502c137934484d90d",
+        "timestamp": "2026-09-05T19:31:51.743Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x305dee8dcb759f37872b9570a65ea00b1ac0efdd339d67d93bd7d0c0df0871e3"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-82930",
+    "createdAt": "2026-09-05T19:24:42.938Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0xb4f389554555044a16682d50b5c3fe831869e369c17e357310eaa0bb08f0403e",
+    "evidenceHash": "0x30cd9d87d5da3acb10141653da09f35e4b2f4518f249cd61e510d8d3f3e14450",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-82930",
+      "timestamp": "2026-09-05T19:24:42.935Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": "v=spf1 include:_spf.google.com ~all",
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xb4f389554555044a16682d50b5c3fe831869e369c17e357310eaa0bb08f0403e",
+        "blockNumber": 1048657,
+        "evidenceHash": "0x30cd9d87d5da3acb10141653da09f35e4b2f4518f249cd61e510d8d3f3e14450",
+        "timestamp": "2026-09-05T19:24:42.930Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xb4f389554555044a16682d50b5c3fe831869e369c17e357310eaa0bb08f0403e"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-02898",
+    "createdAt": "2026-09-05T18:40:02.912Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0x1021afe4f7d69b9a6fedb5a1fa0086f910dd906e5f9bd74d67ee808fc3ca6ac4",
+    "evidenceHash": "0x32bf5366b5a30c72320616342d8769a052a867701aa173ac4b866d2cc2f0a4e4",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-02898",
+      "timestamp": "2026-09-05T18:40:02.908Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": "v=spf1 include:_spf.google.com ~all",
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x1021afe4f7d69b9a6fedb5a1fa0086f910dd906e5f9bd74d67ee808fc3ca6ac4",
+        "blockNumber": 1048206,
+        "evidenceHash": "0x32bf5366b5a30c72320616342d8769a052a867701aa173ac4b866d2cc2f0a4e4",
+        "timestamp": "2026-09-05T18:40:02.898Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x1021afe4f7d69b9a6fedb5a1fa0086f910dd906e5f9bd74d67ee808fc3ca6ac4"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-40608",
+    "createdAt": "2026-09-05T16:00:40.615Z",
+    "subject": "URGENT & CONFIDENTIAL: Acquisition Escrow Wire Transfer #99481",
+    "from": "\"Jonathan Reed (CEO)\" <ceo@target-corp.com>",
+    "senderDomain": "target-corp.com",
+    "to": "\"Emily Chen (CFO)\" <cfo@target-corp.com>",
+    "threatScore": 100,
+    "threatCategory": "Executive Impersonation (BEC)",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "194.26.29.102",
+    "anonymizedIpHash": "f6f920e2cf397f82b2210f68e8dd77359f370f432c442b86cb09d632319d343a",
+    "maskedIp": "194.26.xxx.xxx",
+    "geo": {
+      "ip": "194.26.29.102",
+      "city": "St Petersburg",
+      "region": "St.-Petersburg",
+      "country": "Russia",
+      "countryCode": "RU",
+      "lat": 59.8929,
+      "lon": 30.3285,
+      "isp": "Media Land LLC",
+      "org": "Media Land LLC",
+      "as": "Unknown"
+    },
+    "txHash": "0x22dc63087a26db39158b990772d93c2b5969c18a955dcf15eb9201674a5b7a49",
+    "evidenceHash": "0xb5236140bbe6d47dd4739c6b91c08cb4063f5e3afd270d6834d3cc1bcaad335e",
+    "authSummary": {
+      "spf": "FAIL / UNVERIFIED",
+      "dkim": "FAIL / UNVERIFIED",
+      "dmarc": "FAIL / UNVERIFIED"
+    },
+    "summary": "Forensic analysis flags high threat probability (Score: 100/100) with protocol authentication failures and header mismatch.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-40608",
+      "timestamp": "2026-09-05T16:00:40.612Z",
+      "emailDetails": {
+        "subject": "URGENT & CONFIDENTIAL: Acquisition Escrow Wire Transfer #99481",
+        "from": "\"Jonathan Reed (CEO)\" <ceo@target-corp.com>",
+        "fromEmail": "ceo@target-corp.com",
+        "senderDomain": "target-corp.com",
+        "to": "\"Emily Chen (CFO)\" <cfo@target-corp.com>",
+        "date": "2026-09-05T10:14:15.000Z",
+        "returnPath": "bounce@spoof-exec-redirect.com",
+        "replyTo": "executive-desk@external-offshore-settlement.com",
+        "messageId": "<unverified-random-msg-9921@attacker-relay.net>"
+      },
+      "authentication": {
+        "spf": "FAIL / UNVERIFIED",
+        "dkim": "FAIL / UNVERIFIED",
+        "dmarc": "FAIL / UNVERIFIED",
+        "rawAuthResults": "mx.target-corp.com; spf=fail (sender IP is 194.26.29.102) smtp.mailfrom=spoof-exec@ceo-private-corp.com; dkim=fail; dmarc=fail"
+      },
+      "anomalies": [
+        {
+          "type": "RETURN_PATH_MISMATCH",
+          "severity": "HIGH",
+          "title": "From & Return-Path Domain Mismatch",
+          "description": "Sender displays domain '@target-corp.com', but envelope return path directs to '@spoof-exec-redirect.com'. Common in spear phishing and spoofing.",
+          "senderDomain": "target-corp.com",
+          "returnPathDomain": "spoof-exec-redirect.com"
+        },
+        {
+          "type": "REPLY_TO_MISMATCH",
+          "severity": "HIGH",
+          "title": "Reply-To Diversion Detected",
+          "description": "Replies are redirected to an external domain '@external-offshore-settlement.com' instead of sender '@target-corp.com'. Classic BEC / credential capture technique.",
+          "senderDomain": "target-corp.com",
+          "replyToDomain": "external-offshore-settlement.com"
+        },
+        {
+          "type": "MESSAGE_ID_DOMAIN_MISMATCH",
+          "severity": "LOW",
+          "title": "Message-ID Origin Mismatch",
+          "description": "Message-ID generated from '@attacker-relay.net' differing from sender domain '@target-corp.com'."
+        },
+        {
+          "type": "AUTH_TOTAL_FAILURE",
+          "severity": "CRITICAL",
+          "title": "Zero Protocol Authentication (SPF/DKIM/DMARC)",
+          "description": "All 3 major email cryptographic identity proofs (SPF, DKIM, DMARC) are failing or missing."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "194.26.29.102"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-out.attacker-relay.net (194.26.29.102) by mx.target-corp.com with SMTP; 05 Sep 2026 10:14:22 +0000",
+            "extractedIPs": [
+              "194.26.29.102"
+            ]
+          },
+          {
+            "hopNumber": 2,
+            "raw": "from internal.spoofer (10.0.0.5) by mail-out.attacker-relay.net; 05 Sep 2026 10:14:20 +0000",
+            "extractedIPs": []
+          }
+        ],
+        "originatingIP": "194.26.29.102",
+        "location": {
+          "ip": "194.26.29.102",
+          "city": "St Petersburg",
+          "region": "St.-Petersburg",
+          "country": "Russia",
+          "countryCode": "RU",
+          "lat": 59.8929,
+          "lon": 30.3285,
+          "isp": "Media Land LLC",
+          "org": "Media Land LLC",
+          "as": "Unknown"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "target-corp.com",
+        "hasMx": true,
+        "mxRecords": [
+          "aspmx.l.google.com (Priority: 1)",
+          "alt1.aspmx.l.google.com (Priority: 5)",
+          "alt2.aspmx.l.google.com (Priority: 5)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 9881,
+        "creationDate": "1999-08-16",
+        "registrar": "Network Solutions, LLC",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "194.26.29.102",
+        "abuseConfidenceScore": 88,
+        "totalReports": 142,
+        "lastReportedAt": "2026-09-05T16:00:37.764Z",
+        "usageType": "Data Center / Bulletproof Host",
+        "isp": "High-Risk Autonomous System (ASN)",
+        "isWhitelisted": false,
+        "threatLevel": "HIGH_RISK",
+        "reputationSummary": "Originating IP correlates with known malicious infrastructure or anonymizing proxy relay."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 100,
+        "threatCategory": "Executive Impersonation (BEC)",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Likely Spoofed Domain or Untrusted Relay",
+        "suspiciousCues": [
+          "From & Return-Path domain mismatch indicates sender envelope spoofing.",
+          "Reply-To header redirects correspondence away from legitimate sender domain.",
+          "Email failed standard cryptographic authentication (SPF/DMARC).",
+          "Originating IP is flagged in threat intelligence feeds with abuse score of 88%.",
+          "High-urgency financial or credential harvesting keywords detected in email content."
+        ],
+        "summary": "Forensic analysis flags high threat probability (Score: 100/100) with protocol authentication failures and header mismatch.",
+        "mitigationSteps": [
+          "Block sender domain and originating IP on email gateway",
+          "Quarantine message from recipient inboxes",
+          "Initiate credential reset if user interacted"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x22dc63087a26db39158b990772d93c2b5969c18a955dcf15eb9201674a5b7a49",
+        "blockNumber": 1048507,
+        "evidenceHash": "0xb5236140bbe6d47dd4739c6b91c08cb4063f5e3afd270d6834d3cc1bcaad335e",
+        "timestamp": "2026-09-05T16:00:40.608Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x22dc63087a26db39158b990772d93c2b5969c18a955dcf15eb9201674a5b7a49"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-20965",
+    "createdAt": "2026-09-05T16:00:20.978Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 50,
+    "threatCategory": "Domain Spoofing / Impersonation",
+    "urgencyLevel": "Medium",
+    "isPhishing": true,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0x433c6cea4c9814147a0ecfd555fe0689249184d75a90014070464805938d2940",
+    "evidenceHash": "0xd06df3192aa815ea9122614f06996e7a493074d69a47eb38cf515b09bb59e522",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Forensic analysis flags high threat probability (Score: 50/100) with protocol authentication failures and header mismatch.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-20965",
+      "timestamp": "2026-09-05T16:00:20.975Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [
+        {
+          "type": "RETURN_PATH_MISMATCH",
+          "severity": "HIGH",
+          "title": "From & Return-Path Domain Mismatch",
+          "description": "Sender displays domain '@google.com', but envelope return path directs to '@doc-cloud.bounces.google.com'. Common in spear phishing and spoofing.",
+          "senderDomain": "google.com",
+          "returnPathDomain": "doc-cloud.bounces.google.com"
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 50,
+        "threatCategory": "Domain Spoofing / Impersonation",
+        "urgencyLevel": "Medium",
+        "attributionAssessment": "Likely Spoofed Domain or Untrusted Relay",
+        "suspiciousCues": [
+          "From & Return-Path domain mismatch indicates sender envelope spoofing."
+        ],
+        "summary": "Forensic analysis flags high threat probability (Score: 50/100) with protocol authentication failures and header mismatch.",
+        "mitigationSteps": [
+          "Block sender domain and originating IP on email gateway",
+          "Quarantine message from recipient inboxes",
+          "Initiate credential reset if user interacted"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x433c6cea4c9814147a0ecfd555fe0689249184d75a90014070464805938d2940",
+        "blockNumber": 1048547,
+        "evidenceHash": "0xd06df3192aa815ea9122614f06996e7a493074d69a47eb38cf515b09bb59e522",
+        "timestamp": "2026-09-05T16:00:20.965Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x433c6cea4c9814147a0ecfd555fe0689249184d75a90014070464805938d2940"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-24031",
+    "createdAt": "2026-09-05T15:50:24.060Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 50,
+    "threatCategory": "Domain Spoofing / Impersonation",
+    "urgencyLevel": "Medium",
+    "isPhishing": true,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0xdfc2300404cdd43bc68b057713a15f77d78c5976ba994d2d9e238cd790a5a553",
+    "evidenceHash": "0xa9a8a79579cba41a7841131bec75e7aef236f0627732934cc55a6cd1735aa4e9",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Forensic analysis flags high threat probability (Score: 50/100) with protocol authentication failures and header mismatch.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-24031",
+      "timestamp": "2026-09-05T15:50:24.056Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [
+        {
+          "type": "RETURN_PATH_MISMATCH",
+          "severity": "HIGH",
+          "title": "From & Return-Path Domain Mismatch",
+          "description": "Sender displays domain '@google.com', but envelope return path directs to '@doc-cloud.bounces.google.com'. Common in spear phishing and spoofing.",
+          "senderDomain": "google.com",
+          "returnPathDomain": "doc-cloud.bounces.google.com"
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 50,
+        "threatCategory": "Domain Spoofing / Impersonation",
+        "urgencyLevel": "Medium",
+        "attributionAssessment": "Likely Spoofed Domain or Untrusted Relay",
+        "suspiciousCues": [
+          "From & Return-Path domain mismatch indicates sender envelope spoofing."
+        ],
+        "summary": "Forensic analysis flags high threat probability (Score: 50/100) with protocol authentication failures and header mismatch.",
+        "mitigationSteps": [
+          "Block sender domain and originating IP on email gateway",
+          "Quarantine message from recipient inboxes",
+          "Initiate credential reset if user interacted"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xdfc2300404cdd43bc68b057713a15f77d78c5976ba994d2d9e238cd790a5a553",
+        "blockNumber": 1048607,
+        "evidenceHash": "0xa9a8a79579cba41a7841131bec75e7aef236f0627732934cc55a6cd1735aa4e9",
+        "timestamp": "2026-09-05T15:50:24.031Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0xdfc2300404cdd43bc68b057713a15f77d78c5976ba994d2d9e238cd790a5a553"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-77496",
+    "createdAt": "2026-09-05T15:37:57.533Z",
+    "subject": "Your Google Cloud Monthly Invoice is Ready",
+    "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+    "senderDomain": "google.com",
+    "to": "\"Billing Admin\" <admin@company.com>",
+    "threatScore": 50,
+    "threatCategory": "Domain Spoofing / Impersonation",
+    "urgencyLevel": "Medium",
+    "isPhishing": true,
+    "originatingIP": "209.85.220.65",
+    "anonymizedIpHash": "23b7318decdaf2a3fcf0f8a7e8bc6fa9bfd00db00760cf90e4a81ed2e71442a2",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.65",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.422,
+      "lon": -122.085,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0x24c4e35238cac4ca105c8641ee54661736b3182b39d06e5dcb02e49d0ec3782a",
+    "evidenceHash": "0xd023dbc63e16cfba9e6edc90fd67bc35c82e79b8262ff8286f7454e5d090e4a9",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Forensic analysis flags high threat probability (Score: 50/100) with protocol authentication failures and header mismatch.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-77496",
+      "timestamp": "2026-09-05T15:37:57.532Z",
+      "emailDetails": {
+        "subject": "Your Google Cloud Monthly Invoice is Ready",
+        "from": "\"Google Cloud Billing\" <cloud-billing-noreply@google.com>",
+        "fromEmail": "cloud-billing-noreply@google.com",
+        "senderDomain": "google.com",
+        "to": "\"Billing Admin\" <admin@company.com>",
+        "date": "2026-09-01T08:00:00.000Z",
+        "returnPath": "3j21-z@doc-cloud.bounces.google.com",
+        "replyTo": "cloud-billing-noreply@google.com",
+        "messageId": "<google-cloud-billing-2026-09@google.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.company.com; spf=pass (google.com: domain of 3j21-z@doc-cloud.bounces.google.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=3j21-z@doc-cloud.bounces.google.com; dkim=pass header.i=@google.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com"
+      },
+      "anomalies": [
+        {
+          "type": "RETURN_PATH_MISMATCH",
+          "severity": "HIGH",
+          "title": "From & Return-Path Domain Mismatch",
+          "description": "Sender displays domain '@google.com', but envelope return path directs to '@doc-cloud.bounces.google.com'. Common in spear phishing and spoofing.",
+          "senderDomain": "google.com",
+          "returnPathDomain": "doc-cloud.bounces.google.com"
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "209.85.220.65"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000",
+            "extractedIPs": [
+              "209.85.220.65"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.65",
+        "location": {
+          "ip": "209.85.220.65",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.422,
+          "lon": -122.085,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "google.com",
+        "hasMx": true,
+        "mxRecords": [
+          "smtp.google.com (Priority: 10)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 10582,
+        "creationDate": "1997-09-15",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.65",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 50,
+        "threatCategory": "Domain Spoofing / Impersonation",
+        "urgencyLevel": "Medium",
+        "attributionAssessment": "Likely Spoofed Domain or Untrusted Relay",
+        "suspiciousCues": [
+          "From & Return-Path domain mismatch indicates sender envelope spoofing."
+        ],
+        "summary": "Forensic analysis flags high threat probability (Score: 50/100) with protocol authentication failures and header mismatch.",
+        "mitigationSteps": [
+          "Block sender domain and originating IP on email gateway",
+          "Quarantine message from recipient inboxes",
+          "Initiate credential reset if user interacted"
+        ]
+      },
+      "blockchain": {
+        "status": "IMMUTABLE_EVIDENCE_ANCHORED",
+        "network": "Cryptographic SHA-256 Ledger (EVM Compatible)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x24c4e35238cac4ca105c8641ee54661736b3182b39d06e5dcb02e49d0ec3782a",
+        "blockNumber": 1048495,
+        "evidenceHash": "0xd023dbc63e16cfba9e6edc90fd67bc35c82e79b8262ff8286f7454e5d090e4a9",
+        "timestamp": "2026-09-05T15:37:57.496Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "SHA-256 Digital Forensic Chain-of-Custody Seal",
+        "explorerUrl": "local://chain-of-custody/0x24c4e35238cac4ca105c8641ee54661736b3182b39d06e5dcb02e49d0ec3782a"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-0089",
+    "createdAt": "2026-09-05T12:00:00.000Z",
+    "subject": "URGENT: Outstanding Vendor Invoice #88492 Payment Divert",
+    "from": "Accounts Payable <billing@corporate-finance-vendor.com>",
+    "senderDomain": "corporate-finance-vendor.com",
+    "to": "cfo@target-enterprise.com",
+    "threatScore": 92,
+    "threatCategory": "Executive Impersonation (BEC)",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "194.26.29.102",
+    "anonymizedIpHash": "8f142bc394a12389defa982341908756cba9872134567890abcdef1234567890",
+    "maskedIp": "194.26.xxx.xxx",
+    "geo": {
+      "city": "Frankfurt",
+      "country": "Germany",
+      "isp": "Bulletproof Host Network",
+      "lat": 50.1109,
+      "lon": 8.6821
+    },
+    "txHash": "0x9b78a9c2f689e472013854ba6cfbc23e0129a8d438912ef098a123fbcde54321",
+    "evidenceHash": "0x8f142bc394a12389defa982341908756cba9872134567890abcdef1234567890",
+    "authSummary": {
+      "spf": "FAIL / UNVERIFIED",
+      "dkim": "FAIL / UNVERIFIED",
+      "dmarc": "FAIL / UNVERIFIED"
+    },
+    "summary": "Sophisticated BEC payment redirection attempt spoofing trusted vendor domain. High urgency social engineering cues detected."
+  }
+]
