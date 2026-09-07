@@ -1,5 +1,153 @@
 [
   {
+    "caseId": "CASE-2026-95662",
+    "createdAt": "2026-09-06T15:58:15.863Z",
+    "subject": "Verify for Swiggy's Student Rewards Program - Your Code: 195495",
+    "from": "swiggyforstudents@swiggy.in",
+    "senderDomain": "swiggy.in",
+    "to": "sanchaytiwari@bitdurg.ac.in",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "54.240.27.99",
+    "anonymizedIpHash": "9dd94dbfd2623c585d2555613a9fc0c575637a4ae38d40f157473538b88fbbcf",
+    "maskedIp": "54.240.xxx.xxx",
+    "geo": {
+      "ip": "54.240.27.99",
+      "city": "Portland",
+      "region": "Oregon",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 45.5152,
+      "lon": -122.678,
+      "isp": "Amazon Technologies Inc.",
+      "org": "Amazon Web Services, Inc.",
+      "as": "AS16509 Amazon.com, Inc."
+    },
+    "txHash": "0x42c8fce6aa88736de15264e3c747f5f72c7c50b4ae069b1b3689613c287130d6",
+    "evidenceHash": "0xeeec06b05518aa18954e6001a4d22bb58a068e0d786f98ce6b037cc686b2488b",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-95662",
+      "timestamp": "2026-09-06T15:58:15.860Z",
+      "emailDetails": {
+        "subject": "Verify for Swiggy's Student Rewards Program - Your Code: 195495",
+        "from": "swiggyforstudents@swiggy.in",
+        "fromEmail": "swiggyforstudents@swiggy.in",
+        "senderDomain": "swiggy.in",
+        "to": "sanchaytiwari@bitdurg.ac.in",
+        "date": "2026-08-31T16:04:41.000Z",
+        "returnPath": "010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com",
+        "replyTo": "",
+        "messageId": "<010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.google.com; dkim=pass header.i=@swiggy.in header.s=s3iljnim4erhcwkgkf3ni3fxz4564fvd header.b=WQRk5QaE; dkim=pass header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b=rA2MQCnf; spf=pass (google.com: domain of 010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com designates 54.240.27.99 as permitted sender) smtp.mailfrom=010101a05890d27b-9258ddaf-20db-48a8-a647-9e1468dfb645-000000@us-west-2.amazonses.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=swiggy.in"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "54.240.27.99"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "by 2002:a05:7000:fa07:b0:891:f3f6:9836 with SMTP id cg7csp230860mac; Mon, 31 Aug 2026 09:04:42 -0700 (PDT)",
+            "extractedIPs": []
+          },
+          {
+            "hopNumber": 2,
+            "raw": "from a27-99.smtp-out.us-west-2.amazonses.com (a27-99.smtp-out.us-west-2.amazonses.com. [54.240.27.99]) by mx.google.com with ESMTPS id d9443c01a7336-2d7598d4140si190069105ad.137.20",
+            "extractedIPs": [
+              "54.240.27.99"
+            ]
+          }
+        ],
+        "originatingIP": "54.240.27.99",
+        "location": {
+          "ip": "54.240.27.99",
+          "city": "Portland",
+          "region": "Oregon",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 45.5152,
+          "lon": -122.678,
+          "isp": "Amazon Technologies Inc.",
+          "org": "Amazon Web Services, Inc.",
+          "as": "AS16509 Amazon.com, Inc."
+        }
+      },
+      "domainIntelligence": {
+        "domain": "swiggy.in",
+        "hasMx": true,
+        "mxRecords": [
+          "eu-smtp-inbound-1.mimecast.com (Priority: 0)",
+          "eu-smtp-inbound-2.mimecast.com (Priority: 0)",
+          "aspmx.l.google.com (Priority: 1)"
+        ],
+        "spfRecord": "v=spf1 redirect=b207ww6h._spf._d.mim.ec",
+        "domainAgeDays": null,
+        "creationDate": "Unknown",
+        "registrar": "Privacy Protected / RDAP Unreachable",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "54.240.27.99",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": null,
+        "usageType": "Unknown",
+        "isp": "Unknown",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Standard public IP. No active threat blacklist listings."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "ON_CHAIN_CONFIRMED",
+        "network": "Hardhat Local EVM (Port 8545)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x42c8fce6aa88736de15264e3c747f5f72c7c50b4ae069b1b3689613c287130d6",
+        "blockNumber": 2,
+        "evidenceHash": "0xeeec06b05518aa18954e6001a4d22bb58a068e0d786f98ce6b037cc686b2488b",
+        "timestamp": "2026-09-06T15:58:15.663Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "EVM Smart Contract State Root Proof",
+        "explorerUrl": "http://localhost:8545/tx/0x42c8fce6aa88736de15264e3c747f5f72c7c50b4ae069b1b3689613c287130d6"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
     "caseId": "CASE-2026-63982",
     "createdAt": "2026-09-05T20:19:23.990Z",
     "subject": "Action Required: Your Office 365 Password Expires in 2 Hours",
