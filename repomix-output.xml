@@ -7252,9 +7252,9 @@ Thank you for building with Google Cloud.`
 
 app.listen(PORT, () => {
     console.log(`=======================================================`);
-    console.log(`🚀 Email Forensics & Threat Platform running on :${PORT}`);
-    console.log(`📍 Web3 Blockchain & SOC Case Management Active`);
-    console.log(`🔒 Block 12 Privacy Safeguards Enabled (IP Hashing)`);
+    console.log(` Email Forensics & Threat Platform running on :${PORT}`);
+    console.log(` Web3 Blockchain & SOC Case Management Active`);
+    console.log(` Block 12 Privacy Safeguards Enabled (IP Hashing)`);
     console.log(`=======================================================`);
 });
 </file>
