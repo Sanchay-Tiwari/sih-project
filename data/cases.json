@@ -1,5 +1,472 @@
 [
   {
+    "caseId": "CASE-2026-51324",
+    "createdAt": "2026-09-10T18:12:31.469Z",
+    "subject": "URGENT: Immediate Fee Refund Processing Required Before EOD",
+    "from": "\"Dr. R. K. Sharma (Registrar)\" <registrar@bitdurg.ac.in>",
+    "senderDomain": "bitdurg.ac.in",
+    "to": "sanchaytiwari@bitdurg.ac.in",
+    "threatScore": 95,
+    "threatCategory": "Executive Impersonation (BEC)",
+    "urgencyLevel": "Critical",
+    "isPhishing": true,
+    "originatingIP": "194.26.29.150",
+    "anonymizedIpHash": "4bb5de90dee57f12384e9f247bb67494d297ae11b0fbbb22c731aa4356951432",
+    "maskedIp": "194.26.xxx.xxx",
+    "geo": {
+      "ip": "194.26.29.150",
+      "city": "St Petersburg",
+      "region": "St.-Petersburg",
+      "country": "Russia",
+      "countryCode": "RU",
+      "lat": 59.8929,
+      "lon": 30.3285,
+      "isp": "Media Land LLC",
+      "org": "Media Land LLC",
+      "as": "Unknown"
+    },
+    "txHash": "0x5c9d75ad8b996b3d9bd7e5831329bea9a9246e94d7b227d8d6eb7f2355085f80",
+    "evidenceHash": "0xdfd2faabf50b96ed5f484b0d3a695fa4b88ee83d61e5a0b90af676cae90d811f",
+    "authSummary": {
+      "spf": "FAIL",
+      "dkim": "FAIL",
+      "dmarc": "FAIL"
+    },
+    "summary": "This email is an executive impersonation attack spoofing the university Registrar to trick the recipient into divulging sensitive banking credentials under the guise of an urgent fee refund. Complete authentication failures (SPF/DKIM/DMARC) combined with diverted Reply-To headers confirm malicious intent to execute financial fraud.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-51324",
+      "timestamp": "2026-09-10T18:12:31.465Z",
+      "emailDetails": {
+        "subject": "URGENT: Immediate Fee Refund Processing Required Before EOD",
+        "from": "\"Dr. R. K. Sharma (Registrar)\" <registrar@bitdurg.ac.in>",
+        "fromEmail": "registrar@bitdurg.ac.in",
+        "senderDomain": "bitdurg.ac.in",
+        "to": "sanchaytiwari@bitdurg.ac.in",
+        "date": "2026-09-06T13:05:38.000Z",
+        "returnPath": "bounce@registrar-payouts-secure.com",
+        "replyTo": "accounts-settlement@offshore-fee-processing.com",
+        "messageId": "<urgent-9920331@freehost-vps.net>"
+      },
+      "authentication": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "FAIL",
+        "rawAuthResults": "mx.bitdurg.ac.in; spf=fail (sender IP is 194.26.29.150) smtp.mailfrom=finance-desk@registrar-payouts-secure.com; dkim=fail; dmarc=fail (p=REJECT sp=REJECT dis=NONE) header.from=bitdurg.ac.in"
+      },
+      "anomalies": [
+        {
+          "type": "RETURN_PATH_MISMATCH",
+          "severity": "HIGH",
+          "title": "From & Return-Path Domain Mismatch",
+          "description": "Sender displays domain '@bitdurg.ac.in', but envelope return path directs to unrelated domain '@registrar-payouts-secure.com'. Common indicator of address spoofing.",
+          "senderDomain": "bitdurg.ac.in",
+          "returnPathDomain": "registrar-payouts-secure.com"
+        },
+        {
+          "type": "REPLY_TO_MISMATCH",
+          "severity": "HIGH",
+          "title": "Reply-To Diversion Detected",
+          "description": "Replies are redirected to an external domain '@offshore-fee-processing.com' instead of sender domain '@bitdurg.ac.in'. Common in spear phishing and invoice fraud.",
+          "senderDomain": "bitdurg.ac.in",
+          "replyToDomain": "offshore-fee-processing.com"
+        },
+        {
+          "type": "AUTH_EXPLICIT_FAIL",
+          "severity": "HIGH",
+          "title": "Cryptographic Protocol Authentication Failed",
+          "description": "Email explicitly failed sender policy authentication (SPF: FAIL, DMARC: FAIL). Sender IP is unauthorized by domain DNS."
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "194.26.29.150"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mx-relay01.freehost-vps.net (mx-relay01.freehost-vps.net. [194.26.29.150]) by mx.bitdurg.ac.in with SMTP id a94471si99201028mfa; Sun, 06 Sep 2026 06:05:44 -0700 (PDT)",
+            "extractedIPs": [
+              "194.26.29.150"
+            ]
+          },
+          {
+            "hopNumber": 2,
+            "raw": "from internal-workstation (10.0.0.14) by mx-relay01.freehost-vps.net; Sun, 06 Sep 2026 13:05:40 +0000",
+            "extractedIPs": []
+          }
+        ],
+        "originatingIP": "194.26.29.150",
+        "location": {
+          "ip": "194.26.29.150",
+          "city": "St Petersburg",
+          "region": "St.-Petersburg",
+          "country": "Russia",
+          "countryCode": "RU",
+          "lat": 59.8929,
+          "lon": 30.3285,
+          "isp": "Media Land LLC",
+          "org": "Media Land LLC",
+          "as": "Unknown"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "bitdurg.ac.in",
+        "hasMx": true,
+        "mxRecords": [
+          "aspmx.l.google.com (Priority: 0)",
+          "alt1.aspmx.l.google.com (Priority: 1)",
+          "alt2.aspmx.l.google.com (Priority: 2)"
+        ],
+        "spfRecord": null,
+        "domainAgeDays": 5264,
+        "creationDate": "2012-04-12",
+        "registrar": "ERNET India",
+        "riskRating": "MEDIUM",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "194.26.29.150",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": "2025-12-22T14:08:49+00:00",
+        "usageType": "Data Center/Web Hosting/Transit",
+        "isp": "Media Land LLC",
+        "isWhitelisted": false,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Low threat index. Abuse confidence score is 0%."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 95,
+        "threatCategory": "Executive Impersonation (BEC)",
+        "urgencyLevel": "Critical",
+        "attributionAssessment": "Likely Spoofed Domain via Unauthorized Infrastructure",
+        "suspiciousCues": [
+          "Explicit authentication failures across SPF, DKIM, and DMARC protocols",
+          "Return-Path and Reply-To domain mismatches pointing to suspicious external infrastructure",
+          "Executive impersonation of the university Registrar requesting sensitive banking details",
+          "Artificial EOD pressure tactics and explicit instructions isolating the victim from verifying with the official Accounts office"
+        ],
+        "summary": "This email is an executive impersonation attack spoofing the university Registrar to trick the recipient into divulging sensitive banking credentials under the guise of an urgent fee refund. Complete authentication failures (SPF/DKIM/DMARC) combined with diverted Reply-To headers confirm malicious intent to execute financial fraud.",
+        "mitigationSteps": [
+          "Block the originating IP address (194.26.29.150) and the malicious destination domains at the email gateway and firewall levels.",
+          "Purge this email and any associated instances across the organization's enterprise mailboxes.",
+          "Alert the target user regarding the phishing attempt and issue a domain-wide security awareness advisory concerning fake refund scams."
+        ]
+      },
+      "blockchain": {
+        "status": "ON_CHAIN_CONFIRMED",
+        "network": "Hardhat Local EVM (Port 8545)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x5c9d75ad8b996b3d9bd7e5831329bea9a9246e94d7b227d8d6eb7f2355085f80",
+        "blockNumber": 4,
+        "evidenceHash": "0xdfd2faabf50b96ed5f484b0d3a695fa4b88ee83d61e5a0b90af676cae90d811f",
+        "timestamp": "2026-09-10T18:12:31.324Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "EVM Smart Contract State Root Proof",
+        "explorerUrl": "http://localhost:8545/tx/0x5c9d75ad8b996b3d9bd7e5831329bea9a9246e94d7b227d8d6eb7f2355085f80"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-28108",
+    "createdAt": "2026-09-10T18:10:28.276Z",
+    "subject": "Your CloudDrive password was recently changed",
+    "from": "\"CloudDrive Storage Security\" <security@clouddrive-storage.com>",
+    "senderDomain": "clouddrive-storage.com",
+    "to": "sanchaytiwari@bitdurg.ac.in",
+    "threatScore": 43,
+    "threatCategory": "Domain Spoofing / Impersonation",
+    "urgencyLevel": "Medium",
+    "isPhishing": true,
+    "originatingIP": "104.21.54.112",
+    "anonymizedIpHash": "5ab5a4519e1054e4497a1a3eaf631ca228075c109975493d561df18e4a56bbc3",
+    "maskedIp": "104.21.xxx.xxx",
+    "geo": {
+      "ip": "104.21.54.112",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "countryCode": "CA",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "isp": "Cloudflare, Inc.",
+      "org": "Cloudflare, Inc.",
+      "as": "AS13335 Cloudflare, Inc."
+    },
+    "txHash": "0x3510c7329f448c526f62ee133742fcd0edd9b5a38b212ca3aa67c9c6feeaf6f0",
+    "evidenceHash": "0x235099347f0a5638e09958d448b5c90cef456def92a9b8a254d87ddb658c3588",
+    "authSummary": {
+      "spf": "NEUTRAL",
+      "dkim": "UNVERIFIED",
+      "dmarc": "UNVERIFIED"
+    },
+    "summary": "Forensic analysis detected high-risk threat indicators (Score: 43/100) including protocol/header anomalies and deceptive content intent.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-28108",
+      "timestamp": "2026-09-10T18:10:28.269Z",
+      "emailDetails": {
+        "subject": "Your CloudDrive password was recently changed",
+        "from": "\"CloudDrive Storage Security\" <security@clouddrive-storage.com>",
+        "fromEmail": "security@clouddrive-storage.com",
+        "senderDomain": "clouddrive-storage.com",
+        "to": "sanchaytiwari@bitdurg.ac.in",
+        "date": "2026-09-06T12:40:19.000Z",
+        "returnPath": "bounce@clouddrive-notify-mail.net",
+        "replyTo": "security@clouddrive-storage.com",
+        "messageId": "<pwreset-4471029@clouddrive-notify-mail.net>"
+      },
+      "authentication": {
+        "spf": "NEUTRAL",
+        "dkim": "UNVERIFIED",
+        "dmarc": "UNVERIFIED",
+        "rawAuthResults": "mx.bitdurg.ac.in; spf=neutral smtp.mailfrom=security@clouddrive-storage.com; dkim=none; dmarc=none"
+      },
+      "anomalies": [
+        {
+          "type": "RETURN_PATH_MISMATCH",
+          "severity": "HIGH",
+          "title": "From & Return-Path Domain Mismatch",
+          "description": "Sender displays domain '@clouddrive-storage.com', but envelope return path directs to unrelated domain '@clouddrive-notify-mail.net'. Common indicator of address spoofing.",
+          "senderDomain": "clouddrive-storage.com",
+          "returnPathDomain": "clouddrive-notify-mail.net"
+        }
+      ],
+      "routing": {
+        "hopChain": [
+          "104.21.54.112"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-relay-08.cloudmailgateway.net (mail-relay-08.cloudmailgateway.net. [104.21.54.112]) by mx.bitdurg.ac.in with ESMTPS id b7223si48820192mfa; Sun, 06 Sep 2026 05:40:22 -0700",
+            "extractedIPs": [
+              "104.21.54.112"
+            ]
+          }
+        ],
+        "originatingIP": "104.21.54.112",
+        "location": {
+          "ip": "104.21.54.112",
+          "city": "Toronto",
+          "region": "Ontario",
+          "country": "Canada",
+          "countryCode": "CA",
+          "lat": 43.6532,
+          "lon": -79.3832,
+          "isp": "Cloudflare, Inc.",
+          "org": "Cloudflare, Inc.",
+          "as": "AS13335 Cloudflare, Inc."
+        }
+      },
+      "domainIntelligence": {
+        "domain": "clouddrive-storage.com",
+        "hasMx": false,
+        "mxRecords": [],
+        "spfRecord": null,
+        "domainAgeDays": null,
+        "creationDate": "Unknown",
+        "registrar": "Privacy Protected / RDAP Unreachable",
+        "riskRating": "HIGH",
+        "riskFlags": [
+          "Failed to resolve MX records (Possible nonexistent or disposable domain)"
+        ]
+      },
+      "threatIntelligence": {
+        "ip": "104.21.54.112",
+        "abuseConfidenceScore": 0,
+        "totalReports": 0,
+        "lastReportedAt": "2026-01-06T14:17:47+00:00",
+        "usageType": "Content Delivery Network",
+        "isp": "Cloudflare, Inc.",
+        "isWhitelisted": true,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Low threat index. Abuse confidence score is 0%."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": true,
+        "threatScore": 43,
+        "threatCategory": "Domain Spoofing / Impersonation",
+        "urgencyLevel": "Medium",
+        "attributionAssessment": "Untrusted Relay / Spoofed Infrastructure",
+        "suspiciousCues": [
+          "From & Return-Path domain mismatch indicates envelope sender spoofing."
+        ],
+        "summary": "Forensic analysis detected high-risk threat indicators (Score: 43/100) including protocol/header anomalies and deceptive content intent.",
+        "mitigationSteps": [
+          "Quarantine email from recipient mailboxes",
+          "Block sender domain and originating IP on gateway",
+          "Notify security operations of targeted attempt"
+        ]
+      },
+      "blockchain": {
+        "status": "ON_CHAIN_CONFIRMED",
+        "network": "Hardhat Local EVM (Port 8545)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0x3510c7329f448c526f62ee133742fcd0edd9b5a38b212ca3aa67c9c6feeaf6f0",
+        "blockNumber": 3,
+        "evidenceHash": "0x235099347f0a5638e09958d448b5c90cef456def92a9b8a254d87ddb658c3588",
+        "timestamp": "2026-09-10T18:10:28.108Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "EVM Smart Contract State Root Proof",
+        "explorerUrl": "http://localhost:8545/tx/0x3510c7329f448c526f62ee133742fcd0edd9b5a38b212ca3aa67c9c6feeaf6f0"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
+    "caseId": "CASE-2026-47988",
+    "createdAt": "2026-09-10T18:09:08.243Z",
+    "subject": "[bitdurg/email-threat-scanner] New comment on your pull request #42",
+    "from": "\"GitHub\" <notifications@github.com>",
+    "senderDomain": "github.com",
+    "to": "sanchaytiwari@bitdurg.ac.in",
+    "threatScore": 5,
+    "threatCategory": "Legitimate Communication",
+    "urgencyLevel": "Low",
+    "isPhishing": false,
+    "originatingIP": "209.85.220.41",
+    "anonymizedIpHash": "8a6b9162b9b888da87a241c7d2e2f38edffce4bfdd1e90ae185306097f709594",
+    "maskedIp": "209.85.xxx.xxx",
+    "geo": {
+      "ip": "209.85.220.41",
+      "city": "Mountain View",
+      "region": "California",
+      "country": "United States",
+      "countryCode": "US",
+      "lat": 37.3861,
+      "lon": -122.084,
+      "isp": "Google LLC",
+      "org": "Google LLC",
+      "as": "AS15169 Google LLC"
+    },
+    "txHash": "0xc340f3e758eb2000d04b843544d631243d32535f724cbbf225119a4dff62695a",
+    "evidenceHash": "0x34ef39401ca29973d8be9ce5bf2e2b09124b682e31b21b7319ce15cfb505ca2c",
+    "authSummary": {
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS"
+    },
+    "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+    "fullAnalysis": {
+      "success": true,
+      "caseId": "CASE-2026-47988",
+      "timestamp": "2026-09-10T18:09:08.238Z",
+      "emailDetails": {
+        "subject": "[bitdurg/email-threat-scanner] New comment on your pull request #42",
+        "from": "\"GitHub\" <notifications@github.com>",
+        "fromEmail": "notifications@github.com",
+        "senderDomain": "github.com",
+        "to": "sanchaytiwari@bitdurg.ac.in",
+        "date": "2026-09-06T10:12:08.000Z",
+        "returnPath": "notifications@github.com",
+        "replyTo": "notifications@github.com",
+        "messageId": "<pull-request-review-9284611@github.com>"
+      },
+      "authentication": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "rawAuthResults": "mx.google.com; dkim=pass header.i=@github.com header.s=pf2023 header.b=Kx9aQmT2; spf=pass (google.com: domain of notifications@github.com designates 192.30.252.196 as permitted sender) smtp.mailfrom=notifications@github.com; dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=github.com"
+      },
+      "anomalies": [],
+      "routing": {
+        "hopChain": [
+          "209.85.220.41"
+        ],
+        "hopDetails": [
+          {
+            "hopNumber": 1,
+            "raw": "from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41]) by mx.google.com with SMTPS id d9443c01a7336-2d7598d4140si190069999ad.137.2026.09.06.03.12.10 for <sanchayti",
+            "extractedIPs": [
+              "209.85.220.41"
+            ]
+          }
+        ],
+        "originatingIP": "209.85.220.41",
+        "location": {
+          "ip": "209.85.220.41",
+          "city": "Mountain View",
+          "region": "California",
+          "country": "United States",
+          "countryCode": "US",
+          "lat": 37.3861,
+          "lon": -122.084,
+          "isp": "Google LLC",
+          "org": "Google LLC",
+          "as": "AS15169 Google LLC"
+        }
+      },
+      "domainIntelligence": {
+        "domain": "github.com",
+        "hasMx": true,
+        "mxRecords": [
+          "github-com.mail.protection.outlook.com (Priority: 0)"
+        ],
+        "spfRecord": "v=spf1 ip4:192.30.252.0/22 include:spf.protection.outlook.com include:_netblocks.google.com include:",
+        "domainAgeDays": 6910,
+        "creationDate": "2007-10-09",
+        "registrar": "MarkMonitor Inc.",
+        "riskRating": "LOW",
+        "riskFlags": []
+      },
+      "threatIntelligence": {
+        "ip": "209.85.220.41",
+        "abuseConfidenceScore": 0,
+        "totalReports": 254,
+        "lastReportedAt": "2026-09-10T05:54:30+00:00",
+        "usageType": "Data Center/Web Hosting/Transit",
+        "isp": "Google LLC",
+        "isWhitelisted": true,
+        "threatLevel": "CLEAN",
+        "reputationSummary": "Low threat index. Abuse confidence score is 0%."
+      },
+      "aiThreatAnalysis": {
+        "isPhishing": false,
+        "threatScore": 5,
+        "threatCategory": "Legitimate Communication",
+        "urgencyLevel": "Low",
+        "attributionAssessment": "Legitimate Authorized Mailer",
+        "suspiciousCues": [
+          "Standard routing and authentic sender parameters. No malicious indicators found."
+        ],
+        "summary": "Email appears legitimate with normal business communications and authentic delivery parameters.",
+        "mitigationSteps": [
+          "No containment action required",
+          "Normal delivery approved"
+        ]
+      },
+      "blockchain": {
+        "status": "ON_CHAIN_CONFIRMED",
+        "network": "Hardhat Local EVM (Port 8545)",
+        "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "txHash": "0xc340f3e758eb2000d04b843544d631243d32535f724cbbf225119a4dff62695a",
+        "blockNumber": 2,
+        "evidenceHash": "0x34ef39401ca29973d8be9ce5bf2e2b09124b682e31b21b7319ce15cfb505ca2c",
+        "timestamp": "2026-09-10T18:09:07.989Z",
+        "chainOfCustodyVerified": true,
+        "proofType": "EVM Smart Contract State Root Proof",
+        "explorerUrl": "http://localhost:8545/tx/0xc340f3e758eb2000d04b843544d631243d32535f724cbbf225119a4dff62695a"
+      },
+      "privacyCompliance": {
+        "standard": "GDPR / DPDP Article 12 Evidentiary Standard",
+        "anonymizationMethod": "SHA-256 Hash + Octet Masking",
+        "rawIpRetained": false
+      }
+    }
+  },
+  {
     "caseId": "CASE-2026-58616",
     "createdAt": "2026-09-10T08:32:38.972Z",
     "subject": "URGENT & CONFIDENTIAL: Acquisition Escrow Wire Transfer #99481",
