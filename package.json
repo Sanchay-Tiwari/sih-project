@@ -13,15 +13,22 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "axios": "^1.20.0",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "ethers": "^6.17.0",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mailparser": "^3.9.17",
     "mongoose": "^9.10.0"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "hardhat": "^2.28.0"
+  },
+  "allowScripts": {
+    "keccak@3.0.4": true,
+    "secp256k1@4.0.5": true,
+    "bcrypt@6.0.0": true
   }
 }

@@ -1,6 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB Atlas connected successfully"))
+    .catch((err) => {
+        console.error("❌ MongoDB connection FAILED:", err.message);
+        process.exit(1);
+    });
 
 const { parseEmailHeaders } = require('./services/headerParser');
 const { getGeoLocation } = require('./services/geoService');
@@ -26,7 +34,7 @@ app.get('/api/health', (req, res) => {
             geminiAI: Boolean(process.env.GEMINI_API_KEY),
             abuseIPDB: Boolean(process.env.ABUSEIPDB_API_KEY),
             blockchainEVM: Boolean(process.env.PRIVATE_KEY),
-            caseStorage: "Active (data/cases.json)",
+            caseStorage: "Active (MongoDB Atlas)",
             privacySafeguards: "SHA-256 IP Anonymization (Block 12 Compliant)"
         }
     });
@@ -113,8 +121,8 @@ app.post('/api/analyze', async (req, res) => {
             }
         };
 
-        // Step 6: Persist in Case Storage with IP Anonymization (Block 9 & 12)
-        saveCase(report);
+        // Step 6: Persist in MongoDB with IP Anonymization (Block 9 & 12)
+        await saveCase(report);
 
         res.json(report);
     } catch (error) {
@@ -124,33 +132,36 @@ app.post('/api/analyze', async (req, res) => {
 });
 
 // Case Management Endpoints
-app.get('/api/cases', (req, res) => {
+app.get('/api/cases', async (req, res) => {
     try {
         const { search, category, limit } = req.query;
-        const cases = listCases({ search, category, limit: Number(limit) || 50 });
-        const stats = getCaseStats();
+        const cases = await listCases({ search, category, limit: Number(limit) || 50 });
+        const stats = await getCaseStats();
         res.json({ cases, stats });
     } catch (err) {
+        console.error("Error retrieving cases:", err);
         res.status(500).json({ error: "Failed to retrieve case records" });
     }
 });
 
-app.get('/api/cases/:id', (req, res) => {
+app.get('/api/cases/:id', async (req, res) => {
     try {
-        const caseRecord = getCaseById(req.params.id);
+        const caseRecord = await getCaseById(req.params.id);
         if (!caseRecord) return res.status(404).json({ error: "Case record not found" });
         res.json(caseRecord);
     } catch (err) {
+        console.error("Error retrieving case:", err);
         res.status(500).json({ error: "Failed to retrieve case details" });
     }
 });
 
-app.delete('/api/cases/:id', (req, res) => {
+app.delete('/api/cases/:id', async (req, res) => {
     try {
-        const deleted = deleteCase(req.params.id);
+        const deleted = await deleteCase(req.params.id);
         if (!deleted) return res.status(404).json({ error: "Case not found" });
         res.json({ success: true, message: `Case ${req.params.id} deleted` });
     } catch (err) {
+        console.error("Error deleting case:", err);
         res.status(500).json({ error: "Failed to delete case" });
     }
 });
