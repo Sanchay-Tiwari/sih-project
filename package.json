@@ -20,7 +20,8 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mailparser": "^3.9.17",
-    "mongoose": "^9.10.0"
+    "mongoose": "^9.10.0",
+    "pdf-parse": "^2.4.5"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",

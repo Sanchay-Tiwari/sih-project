@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreatTrace AI Scanner</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <!-- Top Header -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="logo-box">🛡️</div>
+                <div>
+                    <h1 class="title">ThreatTrace AI</h1>
+                    <div class="subtitle">SOC Email Forensics Extension</div>
+                </div>
+            </div>
+            <div class="status-indicator" id="health-status">
+                <span class="status-dot"></span>
+                <span class="status-text" id="health-text">Checking...</span>
+            </div>
+        </header>
+
+        <!-- User Role & Session Bar -->
+        <div class="user-bar" id="user-bar">
+            <div class="user-info">
+                <span class="role-badge" id="role-badge">ANALYST</span>
+                <span class="user-email" id="user-email">analyst@threatintel.soc</span>
+            </div>
+            <button type="button" class="btn-logout" id="btn-logout" title="Sign Out">✕</button>
+        </div>
+
+        <!-- 1-Click Quick Demo Profiles Switcher -->
+        <div class="demo-box">
+            <div class="demo-label">⚡ 1-Click Demo Profiles:</div>
+            <div class="demo-grid">
+                <button type="button" class="btn-demo admin" id="btn-demo-admin">🛡️ Admin</button>
+                <button type="button" class="btn-demo analyst" id="btn-demo-analyst">🔍 Analyst</button>
+                <button type="button" class="btn-demo auditor" id="btn-demo-auditor">📋 Auditor</button>
+            </div>
+        </div>
+
+        <!-- Action Section -->
+        <div class="action-card">
+            <button type="button" class="btn-primary" id="btn-scan-tab">
+                <span>⚡ Scan Current Active Email</span>
+            </button>
+            <a href="http://localhost:5173" target="_blank" class="btn-secondary">
+                <span>Open Full SOC Dashboard ↗</span>
+            </a>
+        </div>
+
+        <!-- Recent Scans Section -->
+        <div class="recent-section">
+            <div class="recent-title">🕒 Recent Scans</div>
+            <div class="recent-list" id="recent-list">
+                <div class="empty-state">No recent email scans logged yet.</div>
+            </div>
+        </div>
+
+        <!-- Settings Drawer -->
+        <div class="settings-box">
+            <label class="settings-label">Backend API URL:</label>
+            <div class="settings-row">
+                <input type="text" id="input-api-url" value="http://localhost:5000" class="input-url">
+                <button type="button" id="btn-save-url" class="btn-save">Save</button>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

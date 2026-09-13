@@ -54,9 +54,15 @@ const caseSchema = new Schema({
     summary: String,
 
     geo: {
-    type: Schema.Types.Mixed,
-    default: {}
-},
+        type: Schema.Types.Mixed,
+        default: {}
+    },
+
+    analyzedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        default: null
+    },
 
     // The full nested forensic report (emailDetails, authentication,
     // anomalies, routing, domainIntelligence, threatIntelligence,

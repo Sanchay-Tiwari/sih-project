@@ -1,0 +1,206 @@
+/* ThreatTrace AI - Injected Webmail UI Styles */
+
+/* Injected Scan Button */
+.threattrace-injected-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #38bdf8 !important;
+    border-radius: 6px !important;
+    padding: 5px 12px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4) !important;
+    transition: all 0.2s ease !important;
+    margin: 0 8px !important;
+    vertical-align: middle !important;
+    z-index: 9999 !important;
+}
+
+.threattrace-injected-btn:hover {
+    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%) !important;
+    box-shadow: 0 4px 14px rgba(56, 189, 248, 0.6) !important;
+    transform: translateY(-1px) !important;
+}
+
+.threattrace-injected-btn.loading {
+    background: #1e293b !important;
+    border-color: #475569 !important;
+    cursor: wait !important;
+}
+
+/* Floating Threat Verdict Modal HUD */
+#threattrace-verdict-overlay {
+    position: fixed !important;
+    top: 24px !important;
+    right: 24px !important;
+    width: 420px !important;
+    max-width: 90vw !important;
+    background: #090d16 !important;
+    color: #f8fafc !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 14px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.2) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    z-index: 2147483647 !important;
+    overflow: hidden !important;
+    animation: threattrace-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes threattrace-slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(30px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.tt-hud-header {
+    background: #111827 !important;
+    padding: 14px 18px !important;
+    border-bottom: 1px solid #1e293b !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.tt-hud-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    color: #f8fafc !important;
+    letter-spacing: -0.3px !important;
+}
+
+.tt-hud-close {
+    background: transparent !important;
+    border: none !important;
+    color: #94a3b8 !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    line-height: 1 !important;
+}
+
+.tt-hud-close:hover {
+    color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.1) !important;
+}
+
+.tt-hud-body {
+    padding: 16px 18px !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+}
+
+.tt-score-card {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 16px !important;
+    border-radius: 10px !important;
+    margin-bottom: 14px !important;
+}
+
+.tt-score-card.high {
+    background: #450a0a !important;
+    border: 1px solid #ef4444 !important;
+}
+
+.tt-score-card.medium {
+    background: #451a03 !important;
+    border: 1px solid #f59e0b !important;
+}
+
+.tt-score-card.safe {
+    background: #064e3b !important;
+    border: 1px solid #10b981 !important;
+}
+
+.tt-score-num {
+    font-size: 26px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+}
+
+.tt-score-label {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.tt-detail-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 6px 0 !important;
+    font-size: 12px !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+.tt-detail-label {
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+}
+
+.tt-detail-value {
+    color: #f1f5f9 !important;
+    font-weight: 700 !important;
+    text-align: right !important;
+}
+
+.tt-cues-box {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    margin: 12px 0 !important;
+    font-size: 11px !important;
+}
+
+.tt-cues-title {
+    color: #38bdf8 !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+}
+
+.tt-cue-item {
+    color: #cbd5e1 !important;
+    margin-left: 14px !important;
+    margin-bottom: 3px !important;
+}
+
+.tt-hud-actions {
+    display: flex !important;
+    gap: 8px !important;
+    margin-top: 14px !important;
+}
+
+.tt-btn-dashboard {
+    flex: 1 !important;
+    background: #0284c7 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 9px !important;
+    border-radius: 6px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: block !important;
+}
+
+.tt-btn-dashboard:hover {
+    background: #0369a1 !important;
+}

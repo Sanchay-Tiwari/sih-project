@@ -15,7 +15,7 @@ function anonymizeIp(ip) {
 /**
  * Save a new forensic analysis case into MongoDB
  */
-async function saveCase(analysisData) {
+async function saveCase(analysisData, userId = null) {
     const caseId = analysisData.caseId || `CASE-${new Date().getFullYear()}-${String(Date.now()).slice(-5)}`;
     const { anonymizedIpHash, maskedIp } = anonymizeIp(analysisData.routing?.originatingIP);
 
@@ -41,6 +41,7 @@ async function saveCase(analysisData) {
             dkim: analysisData.authentication?.dkim || 'UNVERIFIED',
             dmarc: analysisData.authentication?.dmarc || 'UNVERIFIED'
         },
+        analyzedBy: userId || analysisData.analyzedBy || null,
         summary: analysisData.aiThreatAnalysis?.summary || '',
         fullAnalysis: analysisData
     });
@@ -71,6 +72,7 @@ async function listCases({ search = '', category = '', limit = 50 } = {}) {
     }
 
     return await Case.find(query)
+        .populate('analyzedBy', 'email role')
         .sort({ createdAt: -1 })   // newest first, same as old unshift() behavior
         .limit(Number(limit))
         .lean();                   // returns plain JS objects, faster than full Mongoose docs
@@ -80,7 +82,9 @@ async function listCases({ search = '', category = '', limit = 50 } = {}) {
  * Retrieve a specific case by its Case ID
  */
 async function getCaseById(caseId) {
-    return await Case.findOne({ caseId }).lean();
+    return await Case.findOne({ caseId })
+        .populate('analyzedBy', 'email role')
+        .lean();
 }
 
 /**

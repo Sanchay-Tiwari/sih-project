@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "ThreatTrace AI — Email Forensics & Threat Scanner",
+  "version": "1.0.0",
+  "description": "Real-time AI email threat analysis, deep header forensics, and Web3 blockchain evidence anchoring for Gmail, Outlook, and Yahoo Mail.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://outlook.live.com/*",
+    "https://outlook.office.com/*",
+    "https://outlook.office365.com/*",
+    "https://mail.yahoo.com/*",
+    "http://localhost:5000/*",
+    "http://127.0.0.1:5000/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "ThreatTrace AI Email Scanner"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*",
+        "https://outlook.live.com/*",
+        "https://outlook.office.com/*",
+        "https://outlook.office365.com/*",
+        "https://mail.yahoo.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

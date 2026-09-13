@@ -14,15 +14,87 @@ const { parseEmailHeaders } = require('./services/headerParser');
 const { getGeoLocation } = require('./services/geoService');
 const { getDomainIntelligence } = require('./services/domainService');
 const { checkThreatIntel } = require('./services/threatIntelService');
+const { analyzeUrls } = require('./services/urlService');
+const { analyzeAttachments } = require('./services/attachmentService');
+const { analyzeVisionAttachments } = require('./services/visionService');
 const { recordBlockchainEvidence } = require('./services/blockchainService');
 const { saveCase, listCases, getCaseById, deleteCase, getCaseStats } = require('./services/caseStorage');
 const { analyzeEmailWithAI } = require('./services/aiEngine');
+
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('./Database/models/User');
+const { requireAuth, requireRole } = require('./Middleware/auth');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json({ limit: '15mb' }));
+
+// POST /auth/register
+app.post('/auth/register', async (req, res) => {
+    try {
+        const { email, password, role } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({ error: "Email and password required" });
+        }
+
+        const existing = await User.findOne({ email: email.toLowerCase() });
+        if (existing) {
+            return res.status(409).json({ error: "User already exists" });
+        }
+
+        const passwordHash = await bcrypt.hash(password, 10);
+        const user = await User.create({ email, passwordHash, role: role || 'analyst' });
+
+        res.status(201).json({ message: "User registered", userId: user._id, role: user.role });
+    } catch (err) {
+        console.error("Register error:", err);
+        res.status(500).json({ error: "Registration failed" });
+    }
+});
+
+// POST /auth/login
+app.post('/auth/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email: email?.toLowerCase() });
+        if (!user) {
+            return res.status(401).json({ error: "Invalid credentials" });
+        }
+
+        const match = await bcrypt.compare(password, user.passwordHash);
+        if (!match) {
+            return res.status(401).json({ error: "Invalid credentials" });
+        }
+
+        const token = jwt.sign(
+            { userId: user._id, role: user.role },
+            process.env.JWT_SECRET,
+            { expiresIn: '8h' }
+        );
+
+        res.json({ token, role: user.role, email: user.email, userId: user._id });
+    } catch (err) {
+        console.error("Login error:", err);
+        res.status(500).json({ error: "Login failed" });
+    }
+});
+
+// GET /auth/me - Validate current token and fetch session user profile
+app.get('/auth/me', requireAuth, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.userId).select('-passwordHash');
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+        res.json({ user });
+    } catch (err) {
+        console.error("Auth me error:", err);
+        res.status(500).json({ error: "Failed to verify user session" });
+    }
+});
 
 // Health Check & Service Readiness
 app.get('/api/health', (req, res) => {
@@ -32,7 +104,12 @@ app.get('/api/health', (req, res) => {
         version: "2.0.0",
         services: {
             geminiAI: Boolean(process.env.GEMINI_API_KEY),
+            geminiVision: Boolean(process.env.GEMINI_API_KEY),
             abuseIPDB: Boolean(process.env.ABUSEIPDB_API_KEY),
+            googleSafeBrowsing: Boolean(process.env.GOOGLE_SAFE_BROWSING_API_KEY),
+            urlIntelligence: "Active (Regex DOM, Homograph, Shorteners, IP-Detection)",
+            attachmentForensics: "Active (PDF Structural Analysis, Exploit Scanning, Text Heuristics)",
+            visionForensics: "Active (Multimodal Gemini Vision, Brand Impersonation, Quishing)",
             blockchainEVM: Boolean(process.env.PRIVATE_KEY),
             caseStorage: "Active (MongoDB Atlas)",
             privacySafeguards: "SHA-256 IP Anonymization (Block 12 Compliant)"
@@ -40,8 +117,8 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// Main Forensic Analysis Pipeline
-app.post('/api/analyze', async (req, res) => {
+// Main Forensic Analysis Pipeline (Analyst & Admin only)
+app.post('/api/analyze', requireAuth, requireRole('analyst', 'admin'), async (req, res) => {
     try {
         const { rawEmail } = req.body;
         if (!rawEmail || typeof rawEmail !== 'string') {
@@ -51,14 +128,17 @@ app.post('/api/analyze', async (req, res) => {
         // Step 1: Deep Header Parsing & Protocol Anomaly Detection
         const parsedHeader = await parseEmailHeaders(rawEmail);
 
-        // Step 2: Parallel Telemetry Enrichment (Geo, Domain Intel, Threat Intel)
-        const [geoData, domainIntel, threatIntel] = await Promise.all([
+        // Step 2: Parallel Telemetry Enrichment (Geo, Domain Intel, Threat Intel, URL Forensics, Attachment & Vision Forensics)
+        const [geoData, domainIntel, threatIntel, urlIntel, attachmentIntel, visionIntel] = await Promise.all([
             getGeoLocation(parsedHeader.originatingIP),
             getDomainIntelligence(parsedHeader.senderDomain),
-            checkThreatIntel(parsedHeader.originatingIP)
+            checkThreatIntel(parsedHeader.originatingIP),
+            analyzeUrls({ bodyText: parsedHeader.bodyText, bodyHtml: parsedHeader.bodyHtml }),
+            analyzeAttachments(parsedHeader.rawAttachments),
+            analyzeVisionAttachments(parsedHeader.rawAttachments)
         ]);
 
-        // Step 3: Multi-Signal AI Threat Classification (Gemini Flash + Telemetry)
+        // Step 3: Multi-Signal AI Threat Classification (Gemini Flash + Telemetry + URL + Attachments + Vision)
         const aiAnalysis = await analyzeEmailWithAI({
             subject: parsedHeader.subject,
             bodyText: parsedHeader.bodyText,
@@ -72,7 +152,10 @@ app.post('/api/analyze', async (req, res) => {
             anomalies: parsedHeader.anomalies,
             authentication: parsedHeader.authentication,
             domainIntel,
-            threatIntel
+            threatIntel,
+            urlIntelligence: urlIntel,
+            attachmentIntelligence: attachmentIntel,
+            visionIntelligence: visionIntel
         });
 
         // Step 4: Blockchain Evidence Preservation & Chain-of-Custody (Web3 EVM)
@@ -104,6 +187,9 @@ app.post('/api/analyze', async (req, res) => {
             },
             authentication: parsedHeader.authentication,
             anomalies: parsedHeader.anomalies,
+            urlIntelligence: urlIntel,
+            attachmentIntelligence: attachmentIntel,
+            visionIntelligence: visionIntel,
             routing: {
                 hopChain: parsedHeader.hopIPChain,
                 hopDetails: parsedHeader.hopDetails,
@@ -112,6 +198,7 @@ app.post('/api/analyze', async (req, res) => {
             },
             domainIntelligence: domainIntel,
             threatIntelligence: threatIntel,
+            threatVectorMatrix: aiAnalysis.threatVectorMatrix,
             aiThreatAnalysis: aiAnalysis,
             blockchain: blockchainReceipt,
             privacyCompliance: {
@@ -121,8 +208,8 @@ app.post('/api/analyze', async (req, res) => {
             }
         };
 
-        // Step 6: Persist in MongoDB with IP Anonymization (Block 9 & 12)
-        await saveCase(report);
+        // Step 6: Persist in MongoDB with IP Anonymization (Block 9 & 12) & User Association
+        await saveCase(report, req.user?.userId);
 
         res.json(report);
     } catch (error) {
@@ -131,8 +218,8 @@ app.post('/api/analyze', async (req, res) => {
     }
 });
 
-// Case Management Endpoints
-app.get('/api/cases', async (req, res) => {
+// Case Management Endpoints (Analyst, Admin & Auditor for read; Admin only for delete)
+app.get('/api/cases', requireAuth, requireRole('analyst', 'admin', 'auditor'), async (req, res) => {
     try {
         const { search, category, limit } = req.query;
         const cases = await listCases({ search, category, limit: Number(limit) || 50 });
@@ -144,7 +231,7 @@ app.get('/api/cases', async (req, res) => {
     }
 });
 
-app.get('/api/cases/:id', async (req, res) => {
+app.get('/api/cases/:id', requireAuth, requireRole('analyst', 'admin', 'auditor'), async (req, res) => {
     try {
         const caseRecord = await getCaseById(req.params.id);
         if (!caseRecord) return res.status(404).json({ error: "Case record not found" });
@@ -155,7 +242,7 @@ app.get('/api/cases/:id', async (req, res) => {
     }
 });
 
-app.delete('/api/cases/:id', async (req, res) => {
+app.delete('/api/cases/:id', requireAuth, requireRole('admin'), async (req, res) => {
     try {
         const deleted = await deleteCase(req.params.id);
         if (!deleted) return res.status(404).json({ error: "Case not found" });
@@ -226,6 +313,29 @@ Security Operations Center
 Microsoft Cloud Infrastructure Services`
         },
         {
+            name: "Deceptive Phishing Links & Homograph Spoofing",
+            type: "URL_PHISHING",
+            rawEmail: `Received: from relay.bulletproof-host.xyz (185.220.101.42) by mail.target-company.com with ESMTP; 06 Sep 2026 16:30:00 +0000
+Authentication-Results: mail.target-company.com; spf=fail; dkim=none; dmarc=fail
+From: "DocuSign Electronic Signature Service" <service@docus1gn-sign-portal.top>
+Return-Path: <bounce@attacker-dropzone.ru>
+Reply-To: <phish-collector@mail-box.xyz>
+To: "Finance Team" <accounts@target-company.com>
+Subject: IMPORTANT: Review & Sign Audit Confirmation Document #DocuSign-9821
+Date: Sun, 06 Sep 2026 16:30:00 +0000
+Message-ID: <docusign-fraud-8819@docus1gn-sign-portal.top>
+Content-Type: text/html; charset="UTF-8"
+
+<p>Hello Accounts Team,</p>
+<p>You have received a new confidential financial statement requiring your electronic signature.</p>
+<p>Please review and sign the attached statement immediately via the secure DocuSign authentication gateway:</p>
+<p>
+  <a href="http://194.26.29.102:8080/auth/signin?session=99281">https://account.docusign.com/esign/portal</a>
+</p>
+<p>Alternatively, click the secondary mirror link: <a href="http://xn--dcusgn-xta1a.xyz/login">http://docusign.com/audit-review</a> or short link <a href="https://bit.ly/secure-doc-auth">https://bit.ly/secure-doc-auth</a></p>
+<p>Thank you,<br/>DocuSign Trust Center</p>`
+        },
+        {
             name: "Authentic Google Cloud Invoice (Legitimate)",
             type: "LEGITIMATE",
             rawEmail: `Received: from mail-sor-f65.google.com (209.85.220.65) by mx.company.com with SMTP; 01 Sep 2026 08:00:00 +0000
@@ -245,7 +355,7 @@ Your monthly invoice for Google Cloud services (Account ID: 018492-49102-1940) f
 Total Amount: $42.15 USD
 Due Date: Automatic payment scheduled
 
-You can view your detailed usage breakdown and billing report directly in the Google Cloud Console.
+You can view your detailed usage breakdown and billing report directly in the Google Cloud Console: https://console.cloud.google.com/billing
 
 Thank you for building with Google Cloud.`
         }

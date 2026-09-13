@@ -93,7 +93,8 @@ async function parseEmailHeaders(rawEmailText) {
         const messageIdHeader = parsed.headers.get('message-id') || parsed.messageId || '';
         const subject = parsed.subject || 'No Subject';
         const date = parsed.date || new Date();
-        const bodyText = parsed.text || parsed.html || '';
+        const bodyText = parsed.text || (typeof parsed.html === 'string' ? parsed.html.replace(/<[^>]*>/g, ' ') : '');
+        const bodyHtml = typeof parsed.html === 'string' ? parsed.html : '';
 
         const fromEmail = extractEmail(fromHeader);
         const fromDomain = extractDomain(fromHeader);
@@ -213,6 +214,7 @@ async function parseEmailHeaders(rawEmailText) {
             to: toHeader,
             date,
             bodyText: typeof bodyText === 'string' ? bodyText.slice(0, 15000) : '',
+            bodyHtml: typeof bodyHtml === 'string' ? bodyHtml.slice(0, 30000) : '',
             messageId: messageIdHeader,
             returnPath: returnPathHeader,
             returnPathDomain,
@@ -227,7 +229,8 @@ async function parseEmailHeaders(rawEmailText) {
             hopIPChain: uniqueIPChain,
             hopDetails,
             originatingIP,
-            anomalies
+            anomalies,
+            rawAttachments: parsed.attachments || []
         };
     } catch (error) {
         console.error("Header Parsing Error:", error);
